@@ -58,7 +58,7 @@
             <div class="header-upper">
                 <div class="auto-container clearfix">
                     <div class="pull-left logo-outer">
-                        <div class="logo"><a href="index.html"><img src="images/forgetmenot-dog-shelter-singapore.logo.jpg" alt="" title=""></a></div>
+                        <div class="logo"><a href="{{url('/')}}"><img src="images/forgetmenot-dog-shelter-singapore.logo.jpg" alt="" title=""></a></div>
                     </div>
                     <div class="pull-right upper-right clearfix">
                         <div class="nav-outer clearfix">
@@ -70,49 +70,13 @@
                                         <span><i class="fa fa-bars"></i></span>
                                     </button>
                                 </div>
+                                <?php $menu = ['home'=>'Home', 'about-us'=>'About Us', 'sponsor'=>'Sponsor a dog',
+                                'blog'=>'Blog', 'contact-us'=>'Contact Us'] ?>
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="current dropdown"><a href="#">Home</a>
-                                            <ul>
-                                                <li><a href="index.html">Home 01</a></li>
-                                                <li><a href="index-2.html">Home 02</a></li>
-                                                <li><a href="index-3.html">Home 03</a></li>
-                                                <li><a href="index-4.html">Home 04</a></li>
-                                                <li class="dropdown"><a href="#">Header Styles</a>
-                                                    <ul>
-                                                        <li><a href="index.html">Header 01</a></li>
-                                                        <li><a href="index-2.html">Header 02</a></li>
-                                                        <li><a href="index-3.html">Header 03</a></li>
-                                                        <li><a href="index-4.html">Header 04</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="about.html">About Us</a>
-                                            <ul>
-                                                <li><a href="about-2.html">About 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="services.html">Dogs for adoption</a></li>
-                                        <li class="dropdown"><a href="#">Sponsor a dog</a>
-                                            <ul>
-                                                <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="product-details.html">Product Detail</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Check Out</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Blog</a>
-                                            <ul>
-                                                <li><a href="blog.html">Our Blog</a></li>
-                                                <li><a href="blog2.html">Blog 2</a></li>
-                                                <li><a href="blog-leftsidebar.html">Blog Left Sidebar</a></li>
-                                                <li><a href="blog-single.html">Blog Single</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="pets.html">Contact</a>
-                                        </li>
+                                        @foreach($menu as $link => $text)
+                                            <li class="dropdown"><a href="{{url($link)}}">{{$text}}</a>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </nav>
@@ -162,77 +126,9 @@
                             </div>
                             <div class="navbar-collapse collapse clearfix">
                                 <ul class="navigation clearfix">
-                                    <li class="current dropdown"><a href="#">Home</a>
-                                        <ul>
-                                            <li><a href="index.html">Home 01</a></li>
-                                            <li><a href="index-2.html">Home 02</a></li>
-                                            <li><a href="index-3.html">Home 03</a></li>
-                                            <li><a href="index-4.html">Home 04</a></li>
-                                            <li class="dropdown"><a href="#">Header Styles</a>
-                                                <ul>
-                                                    <li><a href="index.html">Header 01</a></li>
-                                                    <li><a href="index-2.html">Header 02</a></li>
-                                                    <li><a href="index-3.html">Header 03</a></li>
-                                                    <li><a href="index-4.html">Header 04</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="about.html">About</a>
-                                        <ul>
-                                            <li><a href="about-2.html">About 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li class="dropdown"><a href="pets.html">Pets</a>
-                                        <ul>
-                                            <li><a href="pet-detail.html">Pet Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Shop</a>
-                                        <ul>
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="product-details.html">Product Detail</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="checkout.html">Check Out</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Pages</a>
-                                        <ul>
-                                            <li><a href="gallery.html">Gallery</a></li>
-                                            <li><a href="gallery-2.html">Gallery 02</a></li>
-                                            <li><a href="404.html">Error</a></li>
-                                            <li><a href="commingsoon.html">Comming Soon</a></li>
-                                            <li><a href="donation.html">Donation</a></li>
-                                            <li><a href="appointment.html">Appointment</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Special Pages</a>
-                                        <ul>
-                                            <li><a href="jobs-list.html">Jobs</a></li>
-                                            <li><a href="job-detail.html">Job Detail</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-detail.html">Team Detail</a></li>
-                                            <li><a href="events.html">Events</a></li>
-                                            <li><a href="event-single.html">Event Detail</a></li>
-                                            <li><a href="calculator.html">Calories Calculator</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Our Blog</a></li>
-                                            <li><a href="blog2.html">Blog 2</a></li>
-                                            <li><a href="blog-leftsidebar.html">Blog Left Sidebar</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="contact.html">Contact</a>
-                                        <ul>
-                                            <li><a href="contact2.html">Contact 2</a></li>
-                                        </ul>
-                                    </li>
+                                    @foreach($menu as $link => $text)
+                                        <li class="dropdown"><a href="{{url($link)}}">{{$text}}</a>
+                                    @endforeach
                                 </ul>
                             </div>
                         </nav>
@@ -258,22 +154,17 @@
                     <!--Image Column-->
                     <div class="image-column col-md-6 col-sm-12 col-xs-12">
                         <div class="image">
-                           <img src="http://placehold.jp/570x426.png">
+                           <img src="{{ asset("images/".$featuredPost->image) }}">
                     </div>
                         </div>
                         <!--Content Column-->
                         <div class="content-column col-md-6 col-sm-12 col-xs-12">
                             <div class="inner-column">
-                                <div class="text">
-                                    <p>Broadcast neglectful and poignantly well until and some listlessly amidst suc cessful concentrically ably dachshund more far but forwardly echidna outside tiger split thanks far vibrantly gosh hence pangolin however notwithstanding leapt untruthful gauchely yikes komodo dully more.</p>
-                                    <p>As abandoned winced this more far wow jeepers near more wow goodness so revealed much along worm some grasshopper.</p>
-                                </div>
-                                <ul class="list-style-one">
-                                    <li>Abore et dolore magna aliqua ut enim veniam</li>
-                                    <li>Quis nostrud exercitation ullamco laboris nisi aliquip</li>
-                                    <li>Eiusmod tempor incididunt labore.</li>
-                                </ul>
-                                <a href="services.html" class="theme-btn btn-style-two">view our services</a>
+                                <h2>{{$featuredPost->title}}</h2>
+
+                                {!! nl2br($featuredPost->shortDesc) !!}
+
+                                <a href="{{url("blog/".$featuredPost->slug)}}" class="theme-btn btn-style-two">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -337,55 +228,20 @@
                 </div>
                 <div class="single-item-carousel owl-carousel owl-theme">
                     <div class="slide">
-                        <!--Services Block-->
                         <div class="row">
-                            <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <div class="content">
-                                        <div class="icon-box">
-                                            <img src="images/dog1.png" class="home-dog-img">
+                            @foreach($adopts as $adopt)
+                                <div class="services-block col-md-6 col-sm-6 col-xs-12">
+                                    <div class="inner-box">
+                                        <div class="content">
+                                            <div class="icon-box">
+                                                <img src=" {{ asset("images/adopts/".$adopt->image) }}" class="home-dog-img">
+                                            </div>
+                                            <h3><a href="services.html">{{ $adopt->name }}</a></h3>
+                                            <div class="text">{{ $adopt->desc }}</div>
                                         </div>
-                                        <h3><a href="services.html">Alice</a></h3>
-                                        <div class="text">The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.</div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--Services Block-->
-                            <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <div class="content">
-                                        <div class="icon-box">
-                                            <img src="images/dog2.png" class="home-dog-img">
-                                        </div>
-                                        <h3><a href="services.html">Bravo</a></h3>
-                                        <div class="text">The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Services Block-->
-                            <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <div class="content">
-                                        <div class="icon-box">
-                                            <img src="images/dog3.png" class="home-dog-img">
-                                        </div>
-                                        <h3><a href="services.html">Charlie</a></h3>
-                                        <div class="text">The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Services Block-->
-                            <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <div class="content">
-                                        <div class="icon-box">
-                                            <img src="images/dog4.png" class="home-dog-img">
-                                        </div>
-                                        <h3><a href="services.html">Delta</a></h3>
-                                        <div class="text">The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.</div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

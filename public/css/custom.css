@@ -1,5 +1,5 @@
 .header-top {
-    background: #538cc6 url(../images/background/layer-1.png) left bottom repeat-x;
+    background: #0074D9 url(../images/background/layer-1.png) left bottom repeat-x;
 }
 
 .main-header .logo-outer {
@@ -76,3 +76,8 @@
 /* .main-footer {
     border-top: 1px solid #538cc6;
 } */
+
+.btn-style-two {
+    background-color: #0074D9;
+    border: 2px solid #0074D9;
+}
