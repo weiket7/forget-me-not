@@ -6,14 +6,74 @@
     padding: 0 0 20px 0;
 }
 
-/* .main-header .header-upper {
-    border-bottom: 1px solid #538cc6;
-} */
-
-.main-menu .navigation>li>a { 
-    padding: 40px 0px 38px 0px
+/*when wide, make logo horizontal with desktop menu and mobile menu*/
+.main-header .header-upper .pull-right {
+    width: auto;
+}
+.header-upper .logo-outer {
+    width: auto
 }
 
+@media only screen and (max-width: 767px) {
+    /*when mobile, hide desktop  menu*/
+    .menu {
+        display:none;
+    }
+    /*whem mobile, add some padding below donate and social media icons*/
+    .header-top {
+        padding: 8px 0 25px;
+    }
+}
+
+
+/*when wide, hide mobile menu*/
+@media only screen and (min-width: 767px) {
+    .main-menu .navbar-header {
+        display: none;
+    }
+    .navbar-collapse.collapse{
+        display: none !important;
+
+    }
+}
+
+/*hamburger background*/
+@media only screen and (max-width: 767px) {
+    .main-menu .navbar-header .navbar-toggle {
+        background: #0074D9;
+        border: 1px solid #0074D9;
+        margin-top: 10px;
+    }
+}
+
+/*dropdown menu*/
+.navbar-collapse {
+    width: 100%;
+}
+.navbar-collapse > .navigation > li {
+    background-color: #0074D9;
+    padding: 10px 10px;
+    border-top: 1px solid white;
+}
+.navbar-collapse > .navigation > li:first-child {
+    border: none;
+}
+.navbar-collapse > .navigation > li > a {
+    padding-left: 10px;
+    line-height: 22px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+/*featured post section*/
+.welcome-section {
+    padding: 20px 0;
+}
+
+/*adopt, sponsor, donate section*/
 .featured-section {
     background: #ebf2f8 url(../images/background/pattern-4.png) left bottom repeat-x;
 }
@@ -21,18 +81,13 @@
     margin-bottom: 0;
 }
 
+/*blog section*/
 .news-section {
     background: #ebf2f8 url(../images/background/pattern-4.png) repeat;
 }
-
 .featured-block .inner-box .content .text {
     text-transform: none;
 }
-
-.welcome-section {
-    padding: 20px 0;
-}
-
 .home-dog-img {
     max-width: 150px;
     max-height: 150px;
@@ -45,10 +100,9 @@
 .services-block .inner-box .content {
     padding-left: 180px;
 }
-.services-block .inner-box {
+ .services-block .inner-box {
     padding: 20px;
-    height: 200px;
-}
+} 
 
 /*contact form*/
 .appointment-section {
@@ -58,11 +112,6 @@
 .default-form {
     margin-bottom: 0;
 }
-
-.main-footer .footer-bottom {
-    border-top: none;
-}
-
 .default-form .form-box .form-group input[type="text"] {
     border: 1px solid black;
 }
@@ -73,9 +122,11 @@
     border: 1px solid black;
 }
 
-/* .main-footer {
-    border-top: 1px solid #538cc6;
-} */
+/*footer*/
+.main-footer .footer-bottom {
+    border-top: none;
+}
+
 
 .btn-style-two {
     background-color: #0074D9;

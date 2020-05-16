@@ -73,7 +73,7 @@
                                         <span><i class="fa fa-bars"></i></span>
                                     </button>
                                 </div>
-                                <div class="navbar-collapse collapse clearfix">
+                                <div class="menu clearfix">
                                     <ul class="navigation clearfix">
                                         @foreach($menu as $link => $text)
                                             <li class="dropdown"><a href="{{url($link)}}">{{$text}}</a>
@@ -81,28 +81,17 @@
                                     </ul>
                                 </div>
                             </nav>
-                            <!-- Main Menu End-->
-                            <!-- <div class="outer-box">
-                                <div class="search-box-outer">
-                                    <div class="dropdown">
-                                        <button class="search-box-btn" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                                        <ul class="dropdown-menu pull-right search-panel menu-search" aria-labelledby="dropdownMenu3">
-                                            <li class="panel-outer">
-                                                <div class="form-container">
-                                                    <form method="post" action="blog.html">
-                                                        <div class="form-group">
-                                                            <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                            <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> -->
+                            
                         </div>
                     </div>
+                </div>
+                
+                <div class="navbar-collapse collapse clearfix">
+                    <ul class="navigation clearfix">
+                        @foreach($menu as $link => $text)
+                            <li class="dropdown"><a href="{{url($link)}}">{{$text}}</a>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
             <!--End Header Upper-->
@@ -140,6 +129,7 @@
             <!--End Sticky Header-->
         </header>
         <!--End Main Header -->
+
         <!--Welcome Section-->
         <section class="welcome-section">
             <div class="auto-container">
@@ -172,6 +162,7 @@
                 </div>
         </section>
         <!--End Welcome Section-->
+
         <!--Featured Section-->
         <section class="featured-section">
             <div class="auto-container">
@@ -232,14 +223,16 @@
                     <div class="slide">
                         <div class="row">
                             @foreach($adopts as $adopt)
-                                <div class="services-block col-md-6 col-sm-6 col-xs-12">
+                                <div class="services-block col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
-                                        <div class="content">
-                                            <div class="icon-box">
+                                        <div class="row">
+                                            <div class="col-md-3">
                                                 <img src=" {{ asset("images/adopts/".$adopt->image) }}" class="home-dog-img">
                                             </div>
-                                            <h3><a href="services.html">{{ $adopt->name }}</a></h3>
-                                            <div class="text">{{ $adopt->desc }}</div>
+                                            <div class="col-md-9">
+                                                <h3><a href="services.html">{{ $adopt->name }}</a></h3>
+                                                <div class="">{{ $adopt->desc }}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -264,7 +257,7 @@
                 </div>
                 <div class="row clearfix">
                     @foreach($posts as $post)
-                    <div class="news-block col-md-4 col-sm-6 col-xs-12">
+                    <div class="news-block col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
                             <div class="image">
                                 <div class="post-date">25 <span>Feb</span></div>
@@ -328,6 +321,7 @@
                                 </div>
 
                                 <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
+                                
                                     @if(session('error'))
                                     <div class="alert alert-danger">
                                             {{ session('error')}}
