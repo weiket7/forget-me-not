@@ -19,6 +19,9 @@
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
+<?php $menu = ['home'=>'Home', 'about-us'=>'About Us', 'sponsor'=>'Sponsor a dog',
+'blog'=>'Blog', 'contact-us'=>'Contact Us'] ?>
+
 <body>
     <div class="page-wrapper">
         <!-- Preloader -->
@@ -70,8 +73,6 @@
                                         <span><i class="fa fa-bars"></i></span>
                                     </button>
                                 </div>
-                                <?php $menu = ['home'=>'Home', 'about-us'=>'About Us', 'sponsor'=>'Sponsor a dog',
-                                'blog'=>'Blog', 'contact-us'=>'Contact Us'] ?>
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
                                         @foreach($menu as $link => $text)
@@ -215,6 +216,7 @@
             </div>
         </section>
         <!--End Featured Section-->
+
         <!--Services Section-->
         <section class="services-section" style="background-image:url(images/background/services-image-1.png)">
             <div class="auto-container">
@@ -261,58 +263,26 @@
                     <h2>Blog</h2>
                 </div>
                 <div class="row clearfix">
-                    <!--News Block-->
+                    @foreach($posts as $post)
                     <div class="news-block col-md-4 col-sm-6 col-xs-12">
                         <div class="inner-box wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
                             <div class="image">
                                 <div class="post-date">25 <span>Feb</span></div>
-                                <a href="blog-single.html"><img src="images/senior-dog.png" alt="" /></a>
+                                <a href="blog-single.html"><img src="{{asset('images/blog/'.$post->image)}}" alt="" /></a>
                             </div>
                             <div class="lower-content">
                                 <!-- <ul class="news-info">
                                     <li>Pets</li>
                                     <li>20 comments</li>
                                 </ul> -->
-                                <h3><a href="blog-single.html">Our role here is solely focused on the wellness of Rusty. 
-                                </a></h3>
-                                <a href="blog-single.html" class="read-more">Read More</a>
+                                <h3>
+                                    <a href="{{url("blog/".$post->slug)}}">{{$post->title}}</a>
+                                </h3>
+                                <a href="{{url("blog/".$post->slug)}}" class="read-more">Read More</a>
                             </div>
                         </div>
                     </div>
-                    <!--News Block-->
-                    <div class="news-block col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="0ms">
-                            <div class="image">
-                                <div class="post-date">28 <span>Feb</span></div>
-                                <a href="blog-single.html"><img src="images/adopted1.png" alt="" /></a>
-                            </div>
-                            <div class="lower-content">
-                                <!-- <ul class="news-info">
-                                    <li>Grommings</li>
-                                    <li>20 comments</li>
-                                </ul> -->
-                                <h3><a href="blog-single.html">Lola with her incredible Mommies</a></h3>
-                                <a href="blog-single.html" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--News Block-->
-                    <div class="news-block col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp" data-wow-duration="3000ms" data-wow-delay="0ms">
-                            <div class="image">
-                                <div class="post-date">30 <span>Feb</span></div>
-                                <a href="blog-single.html"><img src="images/merch1.jpg" alt="" /></a>
-                            </div>
-                            <div class="lower-content">
-                                <!-- <ul class="news-info">
-                                    <li>pets shelter</li>
-                                    <li>20 comments</li>
-                                </ul> -->
-                                <h3><a href="blog-single.html">Today, we are presenting our long awaited FMN Version 3.0 tee-shirt</a></h3>
-                                <a href="blog-single.html" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -332,26 +302,45 @@
                 <!--Default Form-->
                 <div class="default-form">
                     <div class="form-box">
-                        <form method="post" action="contact-form">
+                        <form method="post" action="{{url("contact-us")}}">
+                            {{csrf_field()}}
+                            <a name="contact"></a>
+                            <a id="contact"></a>
                             <div class="row clearfix">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="name" value="" placeholder="Name" required>
+                                    <input type="text" name="name" value="" placeholder="Name">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="email" value="" placeholder="Mobile" required>
+                                    <input type="text" name="mobile" value="" placeholder="Mobile">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="email" value="" placeholder="Email" required>
+                                    <input type="email" name="email" value="" placeholder="Email">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="phone" value="" placeholder="Subject" required>
+                                    <input type="text" name="subject" value="" placeholder="Subject">
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                    <textarea placeholder="Message"></textarea>
+                                    <textarea placeholder="Message" name="message"></textarea>
                                 </div>
                                 <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
                                     <button type="submit" class="theme-btn btn-style-two">Send request</button>
+                                
                                 </div>
+
+                                <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
+                                    @if(session('error'))
+                                    <div class="alert alert-danger">
+                                            {{ session('error')}}
+                                        </div>
+                                    @endif
+                                    
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success')}}
+                                        </div>
+                                    @endif
+                                </div>
+
                             </div>
                         </form>
                     </div>
@@ -361,36 +350,6 @@
         </section>
         <!--End Appointment Section-->
         
-        <!--Save Pets Section-->
-        <!--<section class="save-pets-section">
-            <div class="auto-container">
-                <h2>Help Us & Save More Pets</h2>
-                <div class="text">More forwardly echidna outside tiger split thanks vibrantly gosh hence pangolin however notwithstanding <br> leapt untruthful gauchely yikes komodo successful concentrically dully more.</div>
-                <div class="prices-block">
-                    <div class="row clearfix">
-                        <div class="price-block col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <h3>$35</h3>
-                                <a href="#" class="theme-btn btn-style-three">For Pets Food</a>
-                            </div>
-                        </div>
-                        <div class="price-block col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <h3>$60</h3>
-                                <a href="#" class="theme-btn btn-style-four">For Medicine</a>
-                            </div>
-                        </div>
-                        <div class="price-block col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <h3>$85</h3>
-                                <a href="#" class="theme-btn btn-style-five">For Vet Visit</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        <!--End Save Pets Section-->
         <!--Main Footer-->
         <footer class="main-footer">
             <div class="auto-container">

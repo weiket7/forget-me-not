@@ -13,7 +13,16 @@ class Blog extends Model
 
     public static function getFeaturedPost()
     {
-        return DB::table("blog")->where('blogId', '=', 1)->first();
+        $post = DB::table("blog")->where('isFeatured', '=', 1)->first();
+        if (is_null($post)) {
+            return DB::table("blog")->orderBy('postedOn', 'desc')->take(1)->first();
+        }
+        return $post;
+    }
+
+    public static function getLatestPosts()
+    {
+        return DB::table("blog")->orderBy('postedOn', 'desc')->take(3)->get();
     }
 
     public function saveBlog($input)
