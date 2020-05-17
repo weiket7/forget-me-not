@@ -11,6 +11,11 @@ class Blog extends Model
     protected $primaryKey = 'blog_id';
     public $timestamps = false;
 
+    public static function get($count = 4)
+    {
+        return Blog::orderBy('postedOn', 'desc')->paginate($count);
+    }
+    
     public static function getFeaturedPost()
     {
         $post = DB::table("blog")->where('isFeatured', '=', 1)->first();

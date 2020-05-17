@@ -18,5 +18,5 @@ Route::get('about-us', 'SiteController@about');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('sponsor-a-dog', 'SiteController@sponsor');
 Route::get('blog', 'SiteController@blog');
-Route::get('contact-us', 'SiteController@contact');
+Route::get('contact-us', 'SiteController@contactForm');
 Route::post('contact-us', 'SiteController@contact');

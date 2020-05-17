@@ -127,8 +127,18 @@
     border-top: none;
 }
 
-
 .btn-style-two {
     background-color: #0074D9;
     border: 2px solid #0074D9;
+}
+
+/***BLOG***/
+.blog-page-section {
+    padding: 20px 0;
+}
+.pagination {
+    margin-bottom: 40px;
+}
+.news-block-two{
+    margin-bottom: 40px;
 }

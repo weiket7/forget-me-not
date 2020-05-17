@@ -5,6 +5,7 @@ use App\Mail\ContactMail;
 use App\Models\Adopt;
 use App\Models\Blog;
 use App\Models\Contact;
+use App\Models\Content;
 use App\Models\Enums\AdoptStat;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -24,10 +25,16 @@ class SiteController extends Controller
         return view('home', $data);
     }
   
-    public function aboutUs(Request $request)
+    public function about(Request $request)
     {
-        $data['content'] = Page::where('slug', 'who-we-are')->value('content');
-        return view('about-us', $data);
+        $data['page'] = Content::where('page', 'about')->pluck('content', 'key');
+        return view('about', $data);
+    }
+  
+    public function sponsor(Request $request)
+    {
+        $data['page'] = Content::where('page', 'sponsor')->pluck('content', 'key');
+        return view('sponsor', $data);
     }
   
     public function adopt(Request $request, $slug)
@@ -49,6 +56,11 @@ class SiteController extends Controller
         $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
         $data['adopts_per_page'] = $page_limit;
         return view('adopt', $data);
+    }
+
+    public function contactForm()
+    {
+        return view('contact');
     }
     
     public function contact(Request $request)
@@ -73,5 +85,11 @@ class SiteController extends Controller
     {
         $data['content'] = Page::getContent('Donate');
         return view('donate', $data);
+    }
+    
+    public function blog(Request $request)
+    {
+        $data['posts'] = Blog::get();
+        return view('blog', $data);
     }
 }
