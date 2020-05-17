@@ -143,10 +143,17 @@
     margin-bottom: 40px;
 }
 
-/***ADOPT***/
+/***DOGS FOR ADOPTION***/
+.product-block .inner-box .image {
+    height: 268px;
+    width: 268px;
+    overflow: hidden;
+}
 .btn-view {
     margin-top: 10px;
 }
+
+/***VIEW DOG***/
 .product-heading {
     border-bottom: none;
 }

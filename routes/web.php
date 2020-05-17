@@ -21,3 +21,5 @@ Route::get('sponsor-a-dog', 'SiteController@sponsor');
 Route::get('blog', 'SiteController@blog');
 Route::get('contact-us', 'SiteController@contactForm');
 Route::post('contact-us', 'SiteController@contact');
+
+Route::get('admin', 'AdminController@index');

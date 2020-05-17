@@ -14,10 +14,11 @@
             <div class="product-block col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="inner-box">
                     <div class="image">
-                        <a href="{{ url('view/'.$adopt->slug ) }}">
-                            <img src="{{asset('images/adopts/'.$adopt->image)}}" alt="" />
+                        <a href="{{ url('view/'.$adopt->slug ) }}" class='adopt-img-container'>
+                            <img src="{{asset('images/adopts/'.$adopt->image)}}" class="adopt-img" />
                         </a>
                     </div>
+
                     <div class="lower-content">
                         <div class="title">{{ $adopt->breed }}</div>
                         <h3><a href="{{ url('view/'.$adopt->slug ) }}">{{ $adopt->name }}</a></h3>
