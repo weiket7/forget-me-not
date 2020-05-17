@@ -1,5 +1,5 @@
 .header-top {
-    background: #0074D9 url(../images/background/layer-1.png) left bottom repeat-x;
+    background: #538cc6 url(../images/background/layer-1.png) left bottom repeat-x;
 }
 
 .main-header .logo-outer {
@@ -40,8 +40,8 @@
 /*hamburger background*/
 @media only screen and (max-width: 767px) {
     .main-menu .navbar-header .navbar-toggle {
-        background: #0074D9;
-        border: 1px solid #0074D9;
+        background: #538cc6;
+        border: 1px solid #538cc6;
         margin-top: 10px;
     }
 }
@@ -51,7 +51,7 @@
     width: 100%;
 }
 .navbar-collapse > .navigation > li {
-    background-color: #0074D9;
+    background-color: #538cc6;
     padding: 10px 10px;
     border-top: 1px solid white;
 }
@@ -128,8 +128,8 @@
 }
 
 .btn-style-two {
-    background-color: #0074D9;
-    border: 2px solid #0074D9;
+    background-color: #538cc6;
+    border: 2px solid #538cc6;
 }
 
 /***BLOG***/
@@ -141,4 +141,18 @@
 }
 .news-block-two{
     margin-bottom: 40px;
+}
+
+/***ADOPT***/
+.btn-view {
+    margin-top: 10px;
+}
+.product-heading {
+    border-bottom: none;
+}
+.product-heading h2 {
+    padding-bottom: 0;
+}
+.adopt-desc {
+    margin-top: 10px;
 }

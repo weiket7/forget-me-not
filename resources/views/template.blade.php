@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <title>Forget Me Not, dog shelter in Singapore</title>
     <!-- Stylesheets -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
     <!--Favicon-->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
@@ -24,8 +24,6 @@
 
 <body>
     <div class="page-wrapper">
-        <!-- Preloader -->
-        <div class="preloader"></div>
         <!-- Main Header-->
         <header class="main-header">
             <!--Header Top-->
@@ -40,16 +38,12 @@
                                 </ul>
                             </div>
                             <div class="top-right clearfix">
-                                <div class="donate-box"><a href="donation.html" class="theme-btn btn-style-one">donate</a></div>
+                                <div class="donate-box"><a href="{{ url("donate") }}" class="theme-btn btn-style-one">donate</a></div>
                                 <!--social-icon-->
                                 <div class="social-icon">
                                     <ul class="clearfix">
-                                        <!-- <li><a href="#"><span class="fa fa-twitter"></span></a></li> -->
-                                        <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
+                                        <li><a href="https://www.facebook.com/forgetmenotdogshelter"><span class="fa fa-facebook-square"></span></a></li>
                                         <li><a href="https://www.instagram.com/forgetmenotdogshelter"><span class="fa fa-instagram"></span></a></li>
-                                        <!-- <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-youtube-play"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -61,7 +55,7 @@
             <div class="header-upper">
                 <div class="auto-container clearfix">
                     <div class="pull-left logo-outer">
-                        <div class="logo"><a href="{{url('/')}}"><img src="images/forgetmenot-dog-shelter-singapore.logo.jpg" alt="" title=""></a></div>
+                        <div class="logo"><a href="{{url('/')}}"><img src="{{asset('images/forgetmenot-dog-shelter-singapore.logo.jpg')}}" alt="" title=""></a></div>
                     </div>
                     <div class="pull-right upper-right clearfix">
                         <div class="nav-outer clearfix">
@@ -145,17 +139,17 @@
     <!--End pagewrapper-->
     <!--Scroll to top-->
     <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon flaticon-pawprint-1"></span></div>
-    <script src="js/jquery.js"></script>
-    <script src="js/popper.js"></script>
+    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/popper.js')}}"></script>
     <!--Revolution Slider-->
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.fancybox.js"></script>
-    <script src="js/owl.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/appear.js"></script>
-    <script src="js/wow.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{asset('js/jquery.fancybox.js')}}"></script>
+    <script src="{{asset('js/owl.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.js')}}"></script>
+    <script src="{{asset('js/appear.js')}}"></script>
+    <script src="{{asset('js/wow.js')}}"></script>
+    <script src="{{asset('js/gallery.js')}}"></script>
+    <script src="{{asset('js/script.js')}}"></script>
     
 </body>
 

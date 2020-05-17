@@ -188,7 +188,6 @@
                             </div>
                             <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
                                 <button type="submit" class="theme-btn btn-style-two">Send request</button>
-                            
                             </div>
 
                             <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">

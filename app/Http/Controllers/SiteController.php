@@ -80,6 +80,12 @@ class SiteController extends Controller
         $data['contents'] = Page::getContents();
         return view('volunteer', $data);
     }
+
+    public function view(Request $request, $slug)
+    {
+        $data['adopt'] = Adopt::where('slug', $slug)->first();
+        return view('view', $data);
+    }
   
     public function donate(Request $request)
     {
