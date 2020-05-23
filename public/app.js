@@ -11280,7 +11280,7 @@ var render = function() {
       _vm.src
         ? _c("img", {
             staticStyle: { "max-height": "150px" },
-            attrs: { src: "assets/images/" + _vm.folder + "/" + _vm.src }
+            attrs: { src: "images/" + _vm.folder + "/" + _vm.src }
           })
         : _vm._e()
     ])

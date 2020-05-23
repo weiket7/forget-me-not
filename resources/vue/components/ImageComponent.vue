@@ -6,7 +6,7 @@
     </span>
     <br>
     <div :id="'image-' + name">
-      <img :src="'assets/images/'+folder+'/'+src" v-if="src" style="max-height: 150px"/>
+      <img :src="'images/'+folder+'/'+src" v-if="src" style="max-height: 150px"/>
     </div>
 
   </div>
