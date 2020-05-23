@@ -19,8 +19,15 @@
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
-<?php $menu = ['/'=>'Home', 'about-us'=>'About Us', 'dogs-for-adoption'=>'Dogs for adoption', 'sponsor-a-dog'=>'Sponsor a dog',
-'blog'=>'Blog', 'contact-us'=>'Contact Us'] ?>
+<?php $menu = [
+    ['link'=>'dogs-for-adoption', 'text'=>'Adopt'],
+    ['link'=>'donate', 'text'=>'Donate'],
+    ['link'=>'sponsor-a-dog', 'text'=>'Sponsor'],
+    ['link'=>'merchandise', 'text'=>'Merchandise'],
+    ['link'=>'events', 'text'=>'Events'],
+    ['link'=>'volunteer', 'text'=>'Volunteer'],
+    ['link'=>'contact-us', 'text'=>'Contact']
+]; ?>
 
 <body>
     <div class="page-wrapper">
@@ -38,7 +45,9 @@
                                 </ul>
                             </div>
                             <div class="top-right clearfix">
-                                <div class="donate-box"><a href="{{ url("donate") }}" class="theme-btn btn-style-one">donate</a></div>
+                                <div class="donate-box">
+                                    <a href="{{ url("donate") }}" class="theme-btn btn-style-one">Donate</a>
+                                </div>
                                 <!--social-icon-->
                                 <div class="social-icon">
                                     <ul class="clearfix">
@@ -65,12 +74,19 @@
                                     <!-- Toggle Button -->
                                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                         <span><i class="fa fa-bars"></i></span>
-                                    </button>
+                                    </button>4
                                 </div>
                                 <div class="menu clearfix">
                                     <ul class="navigation clearfix">
-                                        @foreach($menu as $link => $text)
-                                            <li class="dropdown"><a href="{{url($link)}}">{{$text}}</a>
+                                        @foreach($menu as $item)
+                                            <li class="dropdown"><a href="{{url($item['link'])}}">{{$item['text']}}</a>
+                                            @if(isset($item['submenu']))
+                                                <ul>
+                                                    @foreach($item['submenu'] as $i)
+                                                        <li><a href="pet-detail.html">{{$i['text']}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>
@@ -80,10 +96,17 @@
                     </div>
                 </div>
                 
-                <div class="navbar-collapse collapse clearfix">
+                <div class="mobile-menu navbar-collapse collapse clearfix">
                     <ul class="navigation clearfix">
-                        @foreach($menu as $link => $text)
-                            <li class="dropdown"><a href="{{url($link)}}">{{$text}}</a>
+                        @foreach($menu as $item)
+                            <li class="dropdown"><a href="{{url($item['link'])}}">{{$item['text']}}</a>
+                            @if(isset($item['submenu']))
+                                <ul>
+                                    @foreach($item['submenu'] as $i)
+                                        <li><a href="pet-detail.html">{{$i['text']}}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         @endforeach
                     </ul>
                 </div>
@@ -110,9 +133,18 @@
                             </div>
                             <div class="navbar-collapse collapse clearfix">
                                 <ul class="navigation clearfix">
-                                    @foreach($menu as $link => $text)
-                                        <li class="dropdown"><a href="{{url($link)}}">{{$text}}</a>
-                                    @endforeach
+                                    <ul class="navigation clearfix">
+                                        @foreach($menu as $item)
+                                                <li class="dropdown"><a href="{{url($item['link'])}}">{{$item['text']}}</a>
+                                            @if(isset($item['submenu']))
+                                                <ul>
+                                                    @foreach($item['submenu'] as $i)
+                                                        <li><a href="pet-detail.html">{{$i['text']}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        @endforeach
+                                    </ul>
                                 </ul>
                             </div>
                         </nav>

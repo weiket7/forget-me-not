@@ -1,15 +1,15 @@
+import Errors from './errors'
+
 export default {
   data() {
     return {
+      errors: new Errors(),
       loaded: false
     }
   },
-  created() {
-    //console.log(this.$data)
-  },
   methods: {
     onError(error) {
-      if (error.response.status === 500) {
+      if (error.response.status !== 422) {
         toastr.error("A system error occurred");
         return;
       }

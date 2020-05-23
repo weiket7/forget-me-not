@@ -18,8 +18,17 @@ Route::get('about-us', 'SiteController@about');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('view/{slug}', 'SiteController@view');
 Route::get('sponsor-a-dog', 'SiteController@sponsor');
+Route::get('donate', 'SiteController@donate');
+Route::get('merchandise', 'SiteController@merchandise');
+Route::get('events', 'SiteController@events');
+Route::get('volunteer', 'SiteController@volunteer');
 Route::get('blog', 'SiteController@blog');
 Route::get('contact-us', 'SiteController@contactForm');
 Route::post('contact-us', 'SiteController@contact');
 
 Route::get('admin', 'AdminController@index');
+Route::get('api/adopt', 'AdoptController@index');
+Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
+Route::post('api/adopt/save', 'AdoptController@save');
+Route::post('api/adopt/save/{adopt_id}', 'AdoptController@save');
+Route::post('api/adopt/delete/{adopt_id}', 'AdoptController@delete');

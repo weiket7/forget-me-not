@@ -10,7 +10,7 @@ use App\Models\Enums\AdoptStat;
 class Adopt extends Model
 {
     public $table = 'adopt';
-    protected $primaryKey = 'adopt_id';
+    protected $primaryKey = 'adoptId';
     protected $attributes = ['stat' => 'A', 'birthday'=>'', 'breed'=>'Cross Breed'];
     public $timestamps = false;
     //protected $dates = ['birthday'];
@@ -54,7 +54,7 @@ class Adopt extends Model
         $this->history = $input['history'] ?? "";
         $this->posted_by = 'admin';
         $this->posted_on = Carbon::now();
-        if ($this->adopt_id == null) {
+        if ($this->adoptId == null) {
             $this->image = "";
         } else {
             $this->location = $input['location'] ?? "";
@@ -62,7 +62,7 @@ class Adopt extends Model
             $this->rescued_on = $input['rescued_on'] ?? null;
         }
         $this->save();
-        return $this->adopt_id;
+        return $this->adoptId;
     }
   
     public function getAgeAttribute()
