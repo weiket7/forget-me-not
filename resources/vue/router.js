@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from './pages/Dashboard'
 import AdoptList from './pages/AdoptList'
 import Adopt from './pages/Adopt'
+import Page from './pages/Page'
 
 Vue.use(Router)
 
@@ -13,8 +14,6 @@ export default new Router({
     { path: '/adopt/save', name: 'AddAdopt', component: Adopt },
     { path: '/adopt/save/:adoptId', name: 'SaveAdopt', component: Adopt },
   
-    // { path: '/page', name: 'PageList', component: PageList },
-    // { path: '/page/home', name: 'SaveHome', component: PageHome },
-    // { path: '/page/save/:page_id', name: 'SavePage', component: Page },
+    { path: '/page/donate', name: 'Page', component: Page },
   ]
 })

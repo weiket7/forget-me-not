@@ -41,6 +41,59 @@ class ContentTable extends Migration
             'page'=>'about'
         ]);
 
+        
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'image',
+            'content'=>'donate.jpg',
+            'page'=>'volunteer'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'title',
+            'content'=>'Make a Donation',
+            'page'=>'volunteer'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'Content',
+            'key'=>'content',
+            'content'=>'Make a Donation',
+            'page'=>'volunteer'
+        ]);
+
+
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'image',
+            'content'=>'donate.jpg',
+            'page'=>'donate'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'title',
+            'content'=>'Make a Donation',
+            'page'=>'donate'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'Content',
+            'key'=>'content',
+            'content'=>'Plea for donations of food and peepads
+            During this period of Circuit Breaker exercise, we are cut out of adoption drives and all other events indefinitely. The shelter also eventually has to be closed from any form of visitations. 
+            Before the measures have finally kicked in, we took the chance and withdrew a few of our furkids to possibly put them in foster homes to receive care from families whom have already started to work from home. We were glad we made the choice! If not for these arrangements, most of our furkids would have to be confined at the shelter for a good 2 months, minimally. 
+            As most of them who came out from the shelter are barely pee pad trained or outdoor trained, most of the fostering kits will involve provision of the following items which we have ran out. And hope to receive donations in kind to continue to provide for their home care. 
+            ⁃ 𝐏𝐞𝐞 𝐏𝐚𝐝𝐬 (𝟗𝟎𝐜𝐦 𝐱 𝟔𝟎𝐜𝐦)
+            ⁃ 𝐅𝐨𝐨𝐝 𝐚𝐧𝐝 𝐃𝐫𝐢𝐧𝐤𝐬 𝐛𝐨𝐰𝐥
+            ⁃ 𝐌𝐞𝐧𝐝𝐨𝐭𝐚 𝐒𝐥𝐢𝐩 𝐥𝐞𝐚𝐝 / 𝐥𝐞𝐚𝐬𝐡 𝟏/𝟐 𝐱 𝟔𝐟𝐭
+            ⁃ 𝐊𝐢𝐛𝐛𝐥𝐞𝐬
+            ⁃ 𝐒𝐡𝐚𝐦𝐩𝐨𝐨
+            ⁃ 𝐂𝐨𝐥𝐥𝐚𝐫 𝐚𝐧𝐝 𝐓𝐚𝐠 (𝐢𝐧 𝐜𝐚𝐬𝐞 𝐭𝐡𝐞𝐲 𝐠𝐞𝐭 𝐥𝐨𝐬𝐭)
+            ⁃ 𝐍𝐞𝐱𝐠𝐚𝐫𝐝, 𝐇𝐞𝐚𝐫𝐭𝐠𝐚𝐫𝐝
+            During this period of time, we want to also take the opportunity to thank everyone who has been concerned with our furkids and make donations that came in very handy for us.
+            To the fosterers: thank you for your big heart and offering your home and dedication
+            To the donors: thank you for all forms of donations rendered, they have relieved our stress considerably.',
+            'page'=>'donate'
+        ]);
+
 
         DB::table("content")->insert([
             'name'=>'',

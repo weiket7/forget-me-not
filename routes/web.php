@@ -32,3 +32,5 @@ Route::get('api/adopt/get/{adoptId}', 'AdoptController@get');
 Route::post('api/adopt/save', 'AdoptController@save');
 Route::post('api/adopt/save/{adoptId}', 'AdoptController@save');
 Route::post('api/adopt/delete/{adoptId}', 'AdoptController@delete');
+
+Route::get('api/content/get/{page}', 'ContentController@get');

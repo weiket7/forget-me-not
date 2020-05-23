@@ -77,7 +77,7 @@ class SiteController extends Controller
     
     public function volunteer(Request $request)
     {
-        $data['contents'] = Page::getContents();
+        $data['page'] = Content::where('page', 'volunteer')->pluck('content', 'key');
         return view('volunteer', $data);
     }
 
@@ -89,7 +89,7 @@ class SiteController extends Controller
   
     public function donate(Request $request)
     {
-        $data['content'] = Page::getContent('Donate');
+        $data['page'] = Content::where('page', 'donate')->pluck('content', 'key');
         return view('donate', $data);
     }
     

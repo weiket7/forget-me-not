@@ -7,7 +7,7 @@
 
 <script>
   export default {
-    name: "m-label",
+    name: "Label",
     props: {
       required: {type: Boolean, default: false, required: false},
     }

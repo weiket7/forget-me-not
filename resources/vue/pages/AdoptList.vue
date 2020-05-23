@@ -2,43 +2,30 @@
   <card create_link="adopt/save">
     <card-header>Dogs</card-header>
     <card-body>
-      <div class="row">
-        <div class="col-md-2"><static-text>Status</static-text></div>
-        <div class="col-md-4">
-          <select class="form-control m-input" @change="filterAdopts($event.target.value)">
-            <option value="All">All</option>
-            <option value="A">Available</option>
-            <option value="D">Adopted</option>
-          </select>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th width="50px">#</th>
+              <th width="80px">Status</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="adopt in filteredAdopts">
+              <td>{{ adopt.adoptId }}</td>
+              <td>{{ adopt_stats[adopt.stat] }}</td>
+              <td width="450px">
+                <router-link v-bind:to="'/adopt/save/'+adopt.adoptId">{{ adopt.name }}</router-link>
+              </td>
+              <td>{{ adopt.gender | showGender  }}</td>
+              <td>{{ adopt.age}}</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <br>
-
-      <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
-      <div class="table-responsive" v-else>
-        <table class="table table-bordered table-hover">
-          <thead>
-          <tr>
-            <th width="50px">#</th>
-            <th width="80px">Status</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Age</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="adopt in filteredAdopts">
-            <td>{{ adopt.adoptId }}</td>
-            <td>{{ adopt_stats[adopt.stat] }}</td>
-            <td width="450px">
-              <router-link v-bind:to="'/adopt/save/'+adopt.adoptId">{{ adopt.name }}</router-link>
-            </td>
-            <td>{{ adopt.gender | showGender  }}</td>
-            <td>{{ adopt.age}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
     </card-body>
   </card>
 </template>
