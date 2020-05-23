@@ -11,7 +11,7 @@ export default new Router({
     { path: '/dashboard', name: 'Dashboard', component: Dashboard },
     { path: '/adopt', name: 'Adopts', component: AdoptList },
     { path: '/adopt/save', name: 'AddAdopt', component: Adopt },
-    { path: '/adopt/save/:adopt_id', name: 'SaveAdopt', component: Adopt },
+    { path: '/adopt/save/:adoptId', name: 'SaveAdopt', component: Adopt },
   
     // { path: '/page', name: 'PageList', component: PageList },
     // { path: '/page/home', name: 'SaveHome', component: PageHome },

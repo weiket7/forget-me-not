@@ -28,7 +28,7 @@ Route::post('contact-us', 'SiteController@contact');
 
 Route::get('admin', 'AdminController@index');
 Route::get('api/adopt', 'AdoptController@index');
-Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
+Route::get('api/adopt/get/{adoptId}', 'AdoptController@get');
 Route::post('api/adopt/save', 'AdoptController@save');
-Route::post('api/adopt/save/{adopt_id}', 'AdoptController@save');
-Route::post('api/adopt/delete/{adopt_id}', 'AdoptController@delete');
+Route::post('api/adopt/save/{adoptId}', 'AdoptController@save');
+Route::post('api/adopt/delete/{adoptId}', 'AdoptController@delete');

@@ -19,7 +19,7 @@ class AdoptRequest extends FormRequest
       'gender' => 'required',
       'birthday' => 'required',
       'breed' => 'required',
-      'image_new' => 'required_without:adopt_id|mimes:jpeg,png,gif|max:1024',
+      'image_new' => 'required_without:adoptId|mimes:jpeg,png,gif|max:1024',
       'location_other' => 'required_if:location,Others'
     ];
   }

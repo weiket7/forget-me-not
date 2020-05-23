@@ -37,7 +37,8 @@ License: You must have a valid license purchased only from themeforest(the above
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<?php $subHeaderEnabled = false; $subHeaderCss = $subHeaderEnabled ? "subheader-enabled subheader-fixed" : ""; ?>
+	<body id="kt_body" class="header-fixed header-mobile-fixed {{ $subHeaderCss }} aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 		<!--begin::Main-->
 		<!--begin::Header Mobile-->
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">

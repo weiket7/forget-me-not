@@ -1,10 +1,10 @@
 <template>
+      <form @submit.prevent="onSubmit()">
   <card>
     <card-header>
-      {{ is_create ? 'Add Dog' : 'Update Dog' }}
+      {{ isCreate ? 'Add Dog' : 'Update Dog' }}
     </card-header>
     <card-body>
-      <form @submit.prevent="onSubmit()">
       <div class="row">
         <div class="col-md-6">
           
@@ -42,7 +42,7 @@
         <div class="col-md-6">
           <div class='form-group'>
             <label-component required>Status</label-component>
-            <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')" v-if="!is_create"></radio-component>
+            <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')" v-if="!isCreate"></radio-component>
             <static-text v-else>Available</static-text>
           </div>
 
@@ -74,13 +74,14 @@
           </div>
         </div>
       </div>
-    </form>
     </card-body>
     <form-footer>
       <button type="submit" class="btn btn-success">Save</button>
-      <button type="button" class="btn btn-danger" data-toggle="confirmation" v-if="!this.is_create">Delete</button>
+      <button type="button" class="btn btn-danger" data-toggle="confirmation" v-if="!this.isCreate">Delete</button>
     </form-footer>
   </card>
+    </form>
+
 </template>
 
 <script>
@@ -89,7 +90,6 @@
   import FormMixin from "../form-mixin";
   import Label from '../components/Label'
   import StaticText from '../components/StaticText'
-  import Portlet from '../components/Portlet'
   import Textbox from '../components/Textbox'
   import Textarea from '../components/Textarea'
   import Radio from '../components/Radio'
@@ -111,28 +111,15 @@
       }
     },
     computed: {
-      is_create() {
+      isCreate() {
         return this.$route.path == "/adopt/save";
       },
-      location_options() {
-        let options = ['ARC', "The Animal Lodge", "Others"];
-        for (let i=0; i<this.adopters.length; i++) {
-          options.push("Adopter " + this.adopters[i].name);
-        }
-        for (let i=0; i<this.rescuers.length; i++) {
-          options.push("Rescuer " + this.rescuers[i].name);
-        }
-        for (let i=0; i<this.fosters.length; i++) {
-          options.push("Foster " + this.fosters[i].name);
-        }
-        return options;
-      }
     },
     methods: {
       onSubmit() {
         let url = 'api/adopt/save';
-        if (!this.is_create) {
-          url += '/'+ this.$route.params.adopt_id
+        if (!this.isCreate) {
+          url += '/'+ this.$route.params.adoptId
         }
   
         let form_data = this.adopt;
@@ -150,19 +137,16 @@
           };
         }
   
-        console.log(form_data);
-        console.log(config);
-  
         axios.post(url, form_data, config)
           .then(this.onSuccess)
           .catch(this.onError);
       },
       onSuccess(response) {
         this.errors.clear();
-        if (this.is_create) {
+        if (this.isCreate) {
           toastr.success("Dog added");
-          this.adopt.adopt_id = response.data;
-          this.$router.push('/adopt/save/'+this.adopt.adopt_id);
+          this.adopt.adoptId = response.data;
+          this.$router.push('/adopt/save/'+this.adopt.adoptId);
           return;
         }
         toastr.success("Dog updated");
@@ -171,21 +155,17 @@
         this.image_new = file;
       },
       deleteAdopt() {
-        axios.post('api/adopt/delete/'+this.$route.params.adopt_id)
+        axios.post('api/adopt/delete/'+this.$route.params.adoptId)
           .then(response => {
             toastr.success("Adopt deleted");
             this.$router.push('/adopt');
           })
           .catch(this.onError);
       },
-      copy() {
-        document.getElementById("importIntoAdoptadog").select();
-        document.execCommand("copy");
-      }
     },
     created() {
-      if (! this.is_create) {
-        axios.get('api/adopt/get/' + this.$route.params.adopt_id)
+      if (! this.isCreate) {
+        axios.get('api/adopt/get/' + this.$route.params.adoptId)
           .then(response => {
             this.adopt = response.data.adopt;
             this.loaded = true;
@@ -198,26 +178,11 @@
     },
     mounted() {
       let vue = this
-      $('[data-toggle=confirmation]').confirmation({
-        rootSelector: '[data-toggle=confirmation]',
-      }).on("confirmed.bs.confirmation", function() {
-        vue.deleteAdopt();
-      });
-    },
-    components: {
-      'label-component': Label,
-      'image-component': ImageComponent,
-      'static-text': StaticText,
-      'single-portlet': Portlet,
-      'textbox-component': Textbox,
-      'textarea-component': Textarea,
-      'radio-component': Radio,
-      'form-footer': CardFooter,
-      'datepicker-component': Datepicker,
-      'card': Card,
-      'card-header': CardHeader,
-      'card-body': CardBody,
-      'card-footer': CardFooter,
+      // $('[data-toggle=confirmation]').confirmation({
+      //   rootSelector: '[data-toggle=confirmation]',
+      // }).on("confirmed.bs.confirmation", function() {
+      //   vue.deleteAdopt();
+      // });
     },
     mixins: [FormMixin]
   }
