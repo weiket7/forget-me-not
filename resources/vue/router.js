@@ -14,6 +14,6 @@ export default new Router({
     { path: '/adopt/save', name: 'AddAdopt', component: Adopt },
     { path: '/adopt/save/:adoptId', name: 'SaveAdopt', component: Adopt },
   
-    { path: '/page/donate', name: 'Page', component: Page },
+    { path: '/page/:page', name: 'Page', component: Page },
   ]
 })

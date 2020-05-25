@@ -20,7 +20,7 @@
 </head>
 
 <?php $menu = [
-    ['link'=>'dogs-for-adoption', 'text'=>'Adopt'],
+    ['link'=>'dogs-for-adoption', 'text'=>'Dogs for Adoption'],
     ['link'=>'donate', 'text'=>'Donate'],
     ['link'=>'sponsor-a-dog', 'text'=>'Sponsor'],
     ['link'=>'merchandise', 'text'=>'Merchandise'],

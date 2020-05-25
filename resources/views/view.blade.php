@@ -15,10 +15,12 @@
                         <h2>{{ $adopt->name }}</h2>
                     </div>
 
-                    {{ $adopt->gender == 'M' ? 'Male' : "Female" }}
-                    <br>{{ $adopt->age }}
-                    <br>{{ $adopt->hdb ? 'HDB Approved' : 'Not HDB Approved'}}
-
+                    <ul class="petdetails">
+                        <li>Age: <strong>{{ $adopt->age }}</strong></li>
+                        <li>Gender: <strong>{{ $adopt->gender == 'M' ? 'Male' : "Female" }}</strong></li>
+                        <li>HDB: <strong>{{ $adopt->hdb ? 'Approved' : 'Not Approved'}}</strong></li>
+                    </ul>
+                    
                     <div class="adopt-desc">
                         {{$adopt->desc}}
                     </div>

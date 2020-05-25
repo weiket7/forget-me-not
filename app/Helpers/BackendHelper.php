@@ -3,6 +3,7 @@
 use DateTime;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class BackendHelper
 {
@@ -24,13 +25,13 @@ class BackendHelper
     public static function uploadImage($folder, $name, $image)
     {
         if (App::environment('local')) {
-            $base_path = $_SERVER['DOCUMENT_ROOT'] . "/asd/public/assets/images/";
+            $base_path = $_SERVER['DOCUMENT_ROOT'] . "/forgetmenot/public/images/";
         } else {
-            $base_path = $_SERVER['DOCUMENT_ROOT'] . "/public/assets/images/";
+            $base_path = $_SERVER['DOCUMENT_ROOT'] . "/public/images/";
         }
     
         $destination_path = $base_path . $folder . "/";
-        $file_name = str_slug($name).'.'.$image->getClientOriginalExtension();
+        $file_name = Str::slug($name).'.'.$image->getClientOriginalExtension();
         $image->move($destination_path, $file_name);
         return $file_name;
     }

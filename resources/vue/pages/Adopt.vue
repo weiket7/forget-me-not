@@ -104,9 +104,6 @@
     data() {
       return {
         adopt: { breed: "Local Cross"},
-        rescuers: [{}],
-        fosters: [{}],
-        adopters: [{}],
         image_new: null,
       }
     },

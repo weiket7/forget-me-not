@@ -31,5 +31,10 @@
             console.log("TextEditor.vue error")
         });
     },
+    watch: {
+        value(value) {
+            this.editor.data.set(value)
+        }
+    },
 }
 </script>

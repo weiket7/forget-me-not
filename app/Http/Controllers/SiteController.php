@@ -24,19 +24,6 @@ class SiteController extends Controller
         $data['posts'] = Blog::getLatestPosts();
         return view('home', $data);
     }
-  
-    public function about(Request $request)
-    {
-        $data['page'] = Content::where('page', 'about')->pluck('content', 'key');
-        return view('about', $data);
-    }
-  
-    public function sponsor(Request $request)
-    {
-        $data['page'] = Content::where('page', 'sponsor')->pluck('content', 'key');
-        return view('sponsor', $data);
-    }
-  
     public function adopt(Request $request, $slug)
     {
         $data['adopt'] =  Adopt::where('slug', $slug)->first();
@@ -87,6 +74,30 @@ class SiteController extends Controller
         return view('view', $data);
     }
   
+    public function about(Request $request)
+    {
+        $data['page'] = Content::where('page', 'about')->pluck('content', 'key');
+        return view('about', $data);
+    }
+  
+    public function sponsor(Request $request)
+    {
+        $data['page'] = Content::where('page', 'sponsor')->pluck('content', 'key');
+        return view('page', $data);
+    }
+  
+    public function merchandise(Request $request)
+    {
+        $data['page'] = Content::where('page', 'merchandise')->pluck('content', 'key');
+        return view('page', $data);
+    }
+  
+    public function events(Request $request)
+    {
+        $data['page'] = Content::where('page', 'events')->pluck('content', 'key');
+        return view('page', $data);
+    }
+
     public function donate(Request $request)
     {
         $data['page'] = Content::where('page', 'donate')->pluck('content', 'key');

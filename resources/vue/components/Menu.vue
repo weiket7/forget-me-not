@@ -16,9 +16,11 @@ export default {
         return {
             menu: [
                 {'link': '/adopt', 'text': 'Dogs'},
-                {'link': '/donate', 'text': 'Donate'},
-                {'link': '/sponsor', 'text': 'Sponsor'},
-                {'link': '/merchandise', 'text': 'Merchandise'},
+                {'link': '/page/donate', 'text': 'Donate'},
+                {'link': '/page/sponsor', 'text': 'Sponsor'},
+                {'link': '/page/merchandise', 'text': 'Merchandise'},
+                {'link': '/page/events', 'text': 'Event'},
+                {'link': '/page/volunteer', 'text': 'Volunteer'},
             ]
         }
     }

@@ -1,0 +1,31 @@
+@extends('template')
+
+@section('content')
+    <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+            <div class="separator">
+                <span class="icon flaticon-pawprint-1"></span>
+            </div>
+            <h2>{{ $page['title'] }}</h2>
+        </div>
+        <div class="row clearfix">
+            <div class="image-column col-md-6 col-sm-12 col-xs-12">
+                <div class="image">
+                    <img src="{{ asset("images/".$page['image']) }}" class='img-responsive'>
+                </div>
+            </div>
+            <div class="content-column col-md-6 col-sm-12 col-xs-12">
+                <div class="inner-column">
+                    {{-- <h2>{{$featuredPost->title}}</h2> --}}
+
+                    {!! nl2br($page['content']) !!}
+
+                    @section('subcontent')
+
+                    @show
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

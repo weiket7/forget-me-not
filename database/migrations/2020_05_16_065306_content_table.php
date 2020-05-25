@@ -45,20 +45,69 @@ class ContentTable extends Migration
         DB::table("content")->insert([
             'name'=>'',
             'key'=>'image',
-            'content'=>'donate.jpg',
+            'content'=>'volunteer.jpg',
             'page'=>'volunteer'
         ]);
         DB::table("content")->insert([
             'name'=>'',
             'key'=>'title',
-            'content'=>'Make a Donation',
+            'content'=>'Volunteer',
             'page'=>'volunteer'
         ]);
         DB::table("content")->insert([
             'name'=>'Content',
             'key'=>'content',
-            'content'=>'Make a Donation',
+            'content'=>'Volunteer content',
             'page'=>'volunteer'
+        ]);
+
+        
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'image',
+            'content'=>'merch3.jpg',
+            'page'=>'merchandise'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'title',
+            'content'=>'Merchandise',
+            'page'=>'merchandise'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'Content',
+            'key'=>'content',
+            'content'=>'For anything beyond and registered mail arrangement, please let us know so that we can provide the fees involved.
+
+            To place an order, all you would need to do is PM us with the following details:
+            
+            Name
+            Number of Tees and Sizes:
+            Postage requirements: Normal/Registered
+            Mailing address:
+            
+            Once we have received your payment, we will execute your parcel the following working day.',
+            'page'=>'merchandise'
+        ]);
+
+        
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'image',
+            'content'=>'smu-paw-2019.jpg',
+            'page'=>'events'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'',
+            'key'=>'title',
+            'content'=>'Events',
+            'page'=>'events'
+        ]);
+        DB::table("content")->insert([
+            'name'=>'Content',
+            'key'=>'content',
+            'content'=>'Event content',
+            'page'=>'events'
         ]);
 
 
