@@ -29,6 +29,8 @@ Route::post('contact-us', 'SiteController@contact');
 Route::get('admin', 'AdminController@index');
 Route::get('login', 'AdminController@login');
 Route::post('login', 'AdminController@login');
+
+Route::post('api/upload-image', 'AdminController@uploadImage');
 Route::get('api/adopt', 'AdoptController@index');
 Route::get('api/adopt/get/{adoptId}', 'AdoptController@get');
 Route::post('api/adopt/save', 'AdoptController@save');

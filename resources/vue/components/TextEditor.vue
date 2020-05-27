@@ -1,6 +1,6 @@
 
 <template>
-    <textarea name="" id="editor" v-model="value"></textarea>       
+    <textarea name="" id="editor"></textarea>       
 </template>
 
 <script>
@@ -19,22 +19,18 @@
         let vue = this
         ClassicEditor.create(document.querySelector('#editor'), {
             ckfinder: {
-            uploadUrl: 'api/upload-image?folder=blog'
+                uploadUrl: 'api/upload-image?folder=blog'
             }
         }).then(editor => {
             editor.data.set(vue.value);
-            editor.model.document.on( 'change:data', (e) => {
+            editor.model.document.on('change:data', (e) => {
+                console.log(editor.getData());
                 vue.$emit('input', editor.getData());
             } );
             vue.editor = editor;
         }).catch(error => {
             console.log("TextEditor.vue error")
-        });
-    },
-    watch: {
-        value(value) {
-            this.editor.data.set(value)
-        }
+        });        
     },
 }
 </script>

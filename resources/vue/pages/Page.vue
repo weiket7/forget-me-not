@@ -16,12 +16,11 @@
             </div> -->
 
             <div class="form-group">
-                <TextEditor v-model="page.content" :value="page.content" v-if="loaded"></TextEditor>
+                <TextEditor v-model="page.content" v-if="loaded"></TextEditor>
             </div>
         </card-body>
     <form-footer>
-        Can't save yet
-      <!-- <button type="submit" class="btn btn-success">Save</button> -->
+       <button type="submit" class="btn btn-success">Save</button>
     </form-footer>
     </card>
       </form>
