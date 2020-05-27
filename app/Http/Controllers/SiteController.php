@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Content;
 use App\Models\Enums\AdoptStat;
+use App\Models\Enums\BlogType;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -66,6 +67,13 @@ class SiteController extends Controller
     {
         $data['page'] = Content::where('page', 'volunteer')->pluck('content', 'key');
         return view('volunteer', $data);
+    }
+
+    public function blogPost(Request $request, $slug)
+    {
+        $data['blog'] = Blog::where('slug', $slug)->first();
+        $data['blogTypes'] = BlogType::$values;
+        return view('blog-post', $data);
     }
 
     public function view(Request $request, $slug)

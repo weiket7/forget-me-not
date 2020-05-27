@@ -4,11 +4,12 @@ use App\Helpers\BackendHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Str;
 
 class Blog extends Model
 {
     public $table = 'blog';
-    protected $primaryKey = 'blog_id';
+    protected $primaryKey = 'blogId';
     public $timestamps = false;
 
     public static function get($count = 4)
@@ -33,15 +34,16 @@ class Blog extends Model
     public function saveBlog($input)
     {
         $this->title = $input['title'];
-        $this->slug = str_slug($this->title);
+        $this->slug = Str::slug($this->title);
         $this->type = $input['type'];
-        $this->posted_on = BackendHelper::isDateTime($input['posted_on']) ? Carbon::createFromFormat('Y-m-d H:i:s', $input['posted_on']) : Carbon::createFromFormat('Y-m-d', $input['posted_on']);
-        if ($this->blog_id == null) {
+        if ($this->blogId == null) {
             $this->image = "";
+            $this->postedOn = Carbon::now();
         }
+        $this->shortDesc = $input['shortDesc'];
         $this->content = $input['content'];
         $this->save();
 
-        return $this->blog_id;
+        return $this->blogId;
     }
 }

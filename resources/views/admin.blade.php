@@ -49,13 +49,8 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
 			<div class="d-flex align-items-center">
-				<!--begin::Aside Mobile Toggle-->
-				<button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
-					<span></span>
-				</button>
-				<!--end::Aside Mobile Toggle-->
 				<!--begin::Header Menu Mobile Toggle-->
-				<button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
+				<button class="btn p-0 burger-icon ml-4" id="kt_aside_mobile_toggle">
 					<span></span>
 				</button>
 				<!--end::Header Menu Mobile Toggle-->
@@ -898,7 +893,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 		<!--end::Global Theme Bundle-->
-		<script src="{{ asset('app.js') }}"></script>
+		<script src="{{ asset('app.js') }}?v=0527"></script>
 	</body>
 	<!--end::Body-->
 </html>

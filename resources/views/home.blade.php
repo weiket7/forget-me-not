@@ -98,10 +98,12 @@
                                 <div class="inner-box">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <img src=" {{ asset("images/adopts/".$adopt->image) }}" class="home-dog-img">
+                                            <a href="{{ url("view/".$adopt->slug) }}">
+                                                <img src="{{ asset("images/adopts/".$adopt->image) }}" class="home-dog-img">
+                                            </a>
                                         </div>
                                         <div class="col-md-9">
-                                            <h3><a href="services.html">{{ $adopt->name }}</a></h3>
+                                            <h3><a href="{{ url("view/".$adopt->slug) }}">{{ $adopt->name }}</a></h3>
                                             <div class="">{{ $adopt->desc }}</div>
                                         </div>
                                     </div>
@@ -132,7 +134,7 @@
                     <div class="inner-box wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
                         <div class="image">
                             <div class="post-date">25 <span>Feb</span></div>
-                            <a href="blog-single.html"><img src="{{asset('images/blog/'.$post->image)}}" alt="" /></a>
+                            <a href="{{ url("blog/".$post->slug) }}"><img src="{{asset('images/blog/'.$post->image)}}" alt="" /></a>
                         </div>
                         <div class="lower-content">
                             <!-- <ul class="news-info">

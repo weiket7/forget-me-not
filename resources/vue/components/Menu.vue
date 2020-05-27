@@ -20,6 +20,7 @@ export default {
                 {'link': '/page/sponsor', 'text': 'Sponsor'},
                 {'link': '/page/merchandise', 'text': 'Merchandise'},
                 {'link': '/page/events', 'text': 'Event'},
+                {'link': '/blog', 'text': 'Blog'},
                 {'link': '/page/volunteer', 'text': 'Volunteer'},
             ]
         }

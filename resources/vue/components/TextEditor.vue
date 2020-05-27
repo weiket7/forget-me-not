@@ -32,5 +32,10 @@
             console.log("TextEditor.vue error")
         });        
     },
+    watch: {
+        $route() {
+            this.editor.data.set(this.value)
+        }
+    },
 }
 </script>
