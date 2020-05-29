@@ -5,8 +5,9 @@
         <div class="table-responsive">
           <table class="table table-bordered table-hover">
             <thead>
-                <th width="150px">Type</th>
+                <th width="100px">Type</th>
                 <th>Name</th>
+                <th>Featured on home</th>
                 <th>Posted On</th>
             </thead>
             <tbody>
@@ -15,7 +16,8 @@
                 <td width="450px">
                     <router-link v-bind:to="'/blog/save/'+blog.blogId">{{ blog.title }}</router-link>
                 </td>
-                <td>{{ blog.posted_on | formatDate }}</td>
+                <td>{{ blog.isFeatured ? "Yes" : "No" }}</td>
+                <td>{{ blog.postedOn | formatDate }}</td>
             </tr>
             </tbody>
           </table>

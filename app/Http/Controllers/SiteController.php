@@ -51,10 +51,15 @@ class SiteController extends Controller
         return view('contact');
     }
     
-    public function contact(Request $request)
+    public function contact(ContactRequest $request)
     {
         $contact = new Contact();
-        $contact->saveContact($request->all());
+        $contact->name = $request->name;
+        $contact->mobile = $request->mobile;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+
         Mail::send(new ContactMail($contact));
         if (Mail::failures()) {
             $mainEmail = Setting::getMainEmail();

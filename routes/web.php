@@ -30,13 +30,13 @@ Route::post('contact-us', 'SiteController@contact');
 Route::get('admin', 'AdminController@index');
 Route::get('login', 'AdminController@login');
 Route::post('login', 'AdminController@login');
+Route::post('api/delete-record', 'AdminController@deleteRecord');
 
 Route::post('api/upload-image', 'AdminController@uploadImage');
 Route::get('api/adopt', 'AdoptController@index');
 Route::get('api/adopt/get/{adoptId}', 'AdoptController@get');
 Route::post('api/adopt/save', 'AdoptController@save');
 Route::post('api/adopt/save/{adoptId}', 'AdoptController@save');
-Route::post('api/adopt/delete/{adoptId}', 'AdoptController@delete');
 
 Route::get('api/blog', 'BlogController@all');
 Route::get('api/blog/get', 'BlogController@get');

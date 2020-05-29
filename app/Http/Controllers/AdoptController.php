@@ -107,9 +107,4 @@ class AdoptController extends Controller
     {
         return Adopt::where('slug', $slug)->first();
     }
-  
-    public function delete(Request $request, $adoptId)
-    {
-        Adopt::where('adoptId', $adoptId)->delete();
-    }
 }

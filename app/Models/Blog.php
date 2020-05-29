@@ -40,6 +40,7 @@ class Blog extends Model
             $this->image = "";
             $this->postedOn = Carbon::now();
         }
+        $this->isFeatured = $input['isFeatured'];
         $this->shortDesc = $input['shortDesc'];
         $this->content = $input['content'];
         $this->save();

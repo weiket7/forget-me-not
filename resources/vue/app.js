@@ -12,6 +12,8 @@ import CardBody from './components/CardBody'
 import CardFooter from './components/CardFooter'
 import Datepicker from './components/Datepicker'
 import ImageComponent from './components/ImageComponent'
+import CheckboxSingle from './components/CheckboxSingle'
+import Modal from './components/Modal'
 import "./filters"
 
 Vue.component('textbox-component', Textbox);
@@ -25,6 +27,8 @@ Vue.component('card-body', CardBody);
 Vue.component('form-footer', CardFooter);
 Vue.component('datepicker-component', Datepicker);
 Vue.component('image-component', ImageComponent);
+Vue.component('checkbox-single', CheckboxSingle);
+Vue.component('modal', Modal);
 
 new Vue({
   el: '#app',

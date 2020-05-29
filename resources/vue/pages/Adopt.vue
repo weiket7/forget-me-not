@@ -5,6 +5,10 @@
       {{ isCreate ? 'Add Dog' : 'Update Dog' }}
     </card-header>
     <card-body>
+      <modal id="modal-delete" type="delete" :submitEvent="deleteAdopt">
+        Are you sure about deleting {{ adopt.name}}?
+      </modal>
+
       <div class="row">
         <div class="col-md-6">
           
@@ -77,7 +81,9 @@
     </card-body>
     <form-footer>
       <button type="submit" class="btn btn-success">Save</button>
-      <button type="button" class="btn btn-danger" data-toggle="confirmation" v-if="!this.isCreate">Delete</button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete" v-if="!this.isCreate">
+          Delete
+      </button>
     </form-footer>
   </card>
     </form>
@@ -152,9 +158,9 @@
         this.image_new = file;
       },
       deleteAdopt() {
-        axios.post('api/adopt/delete/'+this.$route.params.adoptId)
+        axios.post('api/delete-record?table=adopt&column=adoptId&id='+this.$route.params.adoptId)
           .then(response => {
-            toastr.success("Adopt deleted");
+            toastr.success("Dog deleted");
             this.$router.push('/adopt');
           })
           .catch(this.onError);
@@ -174,12 +180,6 @@
       }
     },
     mounted() {
-      let vue = this
-      // $('[data-toggle=confirmation]').confirmation({
-      //   rootSelector: '[data-toggle=confirmation]',
-      // }).on("confirmed.bs.confirmation", function() {
-      //   vue.deleteAdopt();
-      // });
     },
     mixins: [FormMixin]
   }

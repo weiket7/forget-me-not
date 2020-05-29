@@ -2,18 +2,15 @@
       <form @submit.prevent="onSubmit()">
     <card>
         <card-header>
-            {{ pageName }}
+            {{ page.title }}
         </card-header>
         <card-body>
             <div class="form-group">
-                <label-component>Title</label-component>
-                <textbox-component v-model="page.title"></textbox-component>
-            </div>
-
-            <!-- <div class="form-group">
                 <label-component>Image</label-component>
-                <textbox-component v-model="page.title"></textbox-component>
-            </div> -->
+                <image-component v-model="page.image" name="image"
+                  v-on:update-image="updateImage" 
+                  :src="page.image" folder=""></image-component>
+            </div>
 
             <div class="form-group">
                 <TextEditor v-model="page.content" v-if="loaded"></TextEditor>
@@ -37,15 +34,11 @@ export default {
         return {
             page: {},
             loaded: false,
+            imageNew: null,
         }
     },
     created() {
         this.getPage();
-    },
-    computed: {
-        pageName() {
-            return this.$route.params.page;
-        }
     },
     methods: {
         getPage() {
@@ -55,10 +48,28 @@ export default {
                 this.loaded = true;
             });
         },
+        updateImage(file) {
+            this.imageNew = file;
+        },
         onSubmit() {
+            let form_data = this.page;
+            
+            let config = {};
+            if (this.imageNew) {
+                form_data = new FormData();
+                this.appendObjectToFormData(this.page, form_data);
+                form_data.append("imageNew", this.imageNew);
+                
+                config = {
+                    headers: {
+                    'content-type': 'multipart/form-data'
+                    }
+                };
+            }
+            
             let url = 'api/content/save/'+this.$route.params.page;
-    
-            axios.post(url, this.page)
+
+            axios.post(url, form_data, config)
                 .then(this.onSuccess)
                 .catch(this.onError);
         },

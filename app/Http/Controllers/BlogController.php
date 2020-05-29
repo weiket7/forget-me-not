@@ -6,15 +6,16 @@ use App\Models\Enums\BlogType;
 use App\Models\Blog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
     public function save(BlogRequest $request, $blogId = null)
     {
-        $blog = new Blog();
-        if ($blogId) {
-            $blog = Blog::find($request->blogId);
+        $blog = $blogId == null ? new Blog() : Blog::find($request->blogId);
+        if ($request->isFeatured) {
+            DB::table("blog")->update(['isFeatured'=>0]);
         }
         $blogId = $blog->saveBlog(BackendHelper::processInput($request->all()));
         if ($request->imageNew) {
