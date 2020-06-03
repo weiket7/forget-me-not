@@ -1,14 +1,14 @@
 <template>
   <div class="">
-    <div :class="className">
-      <label v-for="(val, key) in options" class="radio">
+    <div :class="divClass">
+      <label v-for="(val, key) in options" :key="key" class="radio">
         <input type="radio" v-if="isArray" v-bind:value="val" :checked="value == val" :name="name" @change="updateValue($event.target.value)">
         <input type="radio" v-if="!isArray" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
         {{ val }}
         <span></span>
       </label>
     </div>
-    <span class="m-form__help m-form__error" v-if="error">
+    <span class="invalid-feedback" v-if="error">
       {{ error }}
     </span>
   </div>
@@ -36,8 +36,11 @@
       }
     },
     computed: {
-      className() {
+      divClass() {
         return this.inline ? 'radio-inline' : 'radio-list';
+      },
+      inputClass() {
+        return this.error ? "is-invalid" : "";
       },
       isArray() {
         return Array.isArray(this.options);

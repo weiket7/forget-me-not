@@ -1,10 +1,11 @@
 <template>
     <div>
         <label class="checkbox">
-            <input type="checkbox" :checked="value" :name="name" @change="updateValue()">Hell
+            <input type="checkbox" :value="value" :name="name" @change="updateValue($event.target.checked)">
+            <slot></slot>
             <span></span>
         </label>
-        <span class="m-form__help m-form__error" v-if="error">
+        <span class="invalid-feedback" v-if="error">
         {{ error }}
         </span>
   </div>
@@ -19,9 +20,8 @@
       error: { type: String, required: false},
     },
     methods: {
-      updateValue: function (key, val) {
-        
-        this.$emit('input', this.value);
+      updateValue: function (isChecked) {
+        this.$emit('input', isChecked);
       },
     },
   }

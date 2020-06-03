@@ -892,9 +892,8 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 		<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-		<script src="{{ asset('bootstrap-confirmation.js') }}"></script>
 		<!--end::Global Theme Bundle-->
-		<script src="{{ asset('app.js') }}?v=0527"></script>
+		<script src="{{ asset('app.js') }}?v=0603"></script>
 	</body>
 	<!--end::Body-->
 </html>

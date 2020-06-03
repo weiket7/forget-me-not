@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <input type="text" :id="'datepicker-'+name" :name="name" :value="display_value" class="form-control" @input="updateValue($event.target.value)" readonly/>
-    <span class="m-form__help m-form__error" v-if="error">
+    <span class="invalid-feedback" v-if="error">
       {{ error }}
     </span>
   </div>

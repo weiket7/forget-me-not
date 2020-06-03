@@ -19,6 +19,15 @@
                         <li>Age: <strong>{{ $adopt->age }}</strong></li>
                         <li>Gender: <strong>{{ $adopt->gender == 'M' ? 'Male' : "Female" }}</strong></li>
                         <li>HDB: <strong>{{ $adopt->hdb ? 'Approved' : 'Not Approved'}}</strong></li>
+                        @if($adopt->sterilise)
+                            <li>Sterilised</li>
+                        @endif
+                        @if($adopt->vaccinate)
+                            <li>Vaccinated</li>
+                        @endif
+                        @if($adopt->microchip)
+                            <li>Microchippped</li>
+                        @endif
                     </ul>
                     
                     <div class="adopt-desc">

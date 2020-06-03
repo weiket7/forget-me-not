@@ -17,7 +17,7 @@ class BlogController extends Controller
         if ($request->isFeatured) {
             DB::table("blog")->update(['isFeatured'=>0]);
         }
-        $blogId = $blog->saveBlog(BackendHelper::processInput($request->all()));
+        $blogId = $blog->saveBlog($request->all());
         if ($request->imageNew) {
             $image_name = $blog->blogId.'-'.Str::slug($blog->title);
             $image_name = BackendHelper::uploadImage("blog", $image_name, $request->imageNew);
@@ -30,21 +30,21 @@ class BlogController extends Controller
     public function all(Request $request)
     {
         $data['blogs'] = Blog::orderBy('postedOn', 'desc')->get();
-        $data['blog_types'] = BlogType::$values;
+        $data['blogTypes'] = BlogType::$values;
         return $data;
     }
   
-    public function get(Request $request, $blogId)
+    public function get(Request $request, $blogId = null)
     {
-        $blog = null;
-        if (is_numeric($blogId)) {
-            $blog = Blog::where('blogId', $blogId)->first();
-        } else {
-            $slug = $blogId;
-            $blog = Blog::where('slug', $slug)->first();
+        if ($blogId != null) {
+            if (is_numeric($blogId)) {
+                $data['blog'] = Blog::where('blogId', $blogId)->first();
+            } else {
+                $slug = $blogId;
+                $data['blog'] = Blog::where('slug', $slug)->first();
+            }
         }
-        $data['blog'] = $blog;
-        $data['blog_types'] = BlogType::$values;
+        $data['blogTypes'] = BlogType::$values;
         return $data;
     }
   

@@ -1,13 +1,13 @@
 <template>
     <div class="card-header align-items-center mt-4">
-        <h3 class="card-title align-items-start flex-column">
-            <span class="font-weight-bolder text-dark">
-                <slot></slot>
-            </span>
-            <span class="text-muted mt-3 font-weight-bold font-size-sm">
-                {{ subTitle }}
-            </span>
+        <h3 class="card-title">
+            <slot></slot>
         </h3>
+        <div class="card-toolbar">
+            <slot name="toolbar">
+
+            </slot>
+        </div>
     </div>
 </template>
 

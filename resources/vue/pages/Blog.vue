@@ -2,7 +2,7 @@
       <form @submit.prevent="onSubmit()">
     <card>
         <card-header>
-            BLog - {{ blog.title }}
+            Blog - {{ blog.title }}
         </card-header>
         <card-body>
           <modal id="modal-delete" type="delete" :submitEvent="deleteBlog">
@@ -11,19 +11,26 @@
 
             <div class="form-group">
                 <label-component required>Title</label-component>
-                <textbox-component v-model="blog.title"></textbox-component>
+                <textbox-component v-model="blog.title" :error="errors.get('title')"></textbox-component>
             </div>
 
             <div class="form-group">
-              <label-component required>Feature on home</label-component>
-              <radio-component v-model="blog.isFeatured" :options="{ '1': 'Yes', '0': 'No' }" :error="errors.get('isFeatured')"></radio-component>
+              <label-component>Feature on home <small>(existing featured post will become unfeatured)</small></label-component>
+              <checkbox-single name="isFeatured" :value="1" v-model="blog.isFeatured">Yes</checkbox-single> 
+            </div>
+
+            <div class="form-group" :class="errors.get('type') ? 'validated' : ''">
+              <label-component required>Type</label-component>
+              <radio-component v-model="blog.type" :options="blogTypes" :error="errors.get('type')"></radio-component>
             </div>
 
             <div class="form-group">
                 <label-component required>Image</label-component>
                 <image-component v-model="blog.image" name="image"
                   v-on:update-image="updateImage" 
-                  :src="blog.image" folder="blog"></image-component>
+                  :src="blog.image" folder="blog"
+                  :error="errors.get('imageNew')">
+                </image-component>
             </div>
 
             <div class="form-group">
@@ -55,8 +62,10 @@ export default {
     name: "blog",
     data() {
       return {
-        blog: {},
-        blog_types: {},
+        blog: {
+          content: ""
+        },
+        blogTypes: {},
         imageNew: null,
       }
     },
@@ -109,10 +118,11 @@ export default {
       }
     },
     mounted() {
-      axios.get("api/blog/get/" + this.$route.params.blogId)
+      const url = "api/blog/get" + (this.isCreate ? "" : "/"+this.$route.params.blogId);
+      axios.get(url)
         .then(response => {
-          this.blog = this.isCreate ? {} : response.data.blog;
-          this.blog_types = response.data.blog_types;
+          this.blog = this.isCreate ? this.blog : response.data.blog;
+          this.blogTypes = response.data.blogTypes;
           this.loaded = true;
         });
     },

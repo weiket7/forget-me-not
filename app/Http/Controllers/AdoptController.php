@@ -16,10 +16,10 @@ class AdoptController extends Controller
         if ($adoptId) {
             $adopt = Adopt::find($request->get('adoptId'));
         }
-        $adoptId = $adopt->saveAdopt(BackendHelper::processInput($request->all()));
-        if ($request->image_new) {
+        $adoptId = $adopt->saveAdopt($request->all());
+        if ($request->imageNew) {
             $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
-            $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image_new);
+            $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->imageNew);
             $adopt->image = $image_name;
             $adopt->save();
         }

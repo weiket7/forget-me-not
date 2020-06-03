@@ -1,15 +1,14 @@
 <?php namespace App\Models\Enums;
 
-abstract class BlogType {
-  const News = 'N';
-  const DogsInNeed = 'I';
-  const GoneToLovingHomes = 'G';
+abstract class BlogType
+{
+    const News = 'N';
+    const Events = 'E';
+    const SuccessStories = 'S';
   
-  static $values = array(
+    public static $values = array(
     self::News=>'News',
-    self::DogsInNeed=>'Dogs In Need',
-    self::GoneToLovingHomes=>'Gone To Loving Homes',
+    self::Events=>'Events',
+    self::SuccessStories=>'Success Stories',
   );
 }
-
-

@@ -4,6 +4,7 @@ use App\Helpers\BackendHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class Blog extends Model
@@ -40,7 +41,7 @@ class Blog extends Model
             $this->image = "";
             $this->postedOn = Carbon::now();
         }
-        $this->isFeatured = $input['isFeatured'];
+        $this->isFeatured = isset($input['isFeatured']) ? 1 : 0;
         $this->shortDesc = $input['shortDesc'];
         $this->content = $input['content'];
         $this->save();

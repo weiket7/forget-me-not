@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <textarea :name="name" class="form-control" @input="updateValue($event.target.value)" :rows="rows">{{ value }}</textarea>
-    <span class="m-form__help m-form__error" v-if="error">
+    <textarea :name="name" class="form-control" :class="inputClass" @input="updateValue($event.target.value)" :rows="rows">{{ value }}</textarea>
+    <span class="invalid-feedback" v-if="error">
       {{ error }}
     </span>
   </div>
@@ -15,6 +15,11 @@
       value: { required: false},
       error: { type: String, required: false},
       rows: { type: Number, required: false}
+    },
+    computed: {
+      inputClass() {
+        return this.error ? "is-invalid" : "";
+      }
     },
     methods: {
       updateValue: function (value) {

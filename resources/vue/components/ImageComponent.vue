@@ -1,7 +1,7 @@
 <template>
   <div class="col-lg-3">
-    <input type="file" :name="name" @input="updateValue($event)" class="form-control">
-    <span class="m-form__help m-form__error" v-if="error">
+    <input type="file" :name="name" @input="updateValue($event)" class="form-control" :class="inputClass">
+    <span class="invalid-feedback" v-if="error">
       {{ error }}
     </span>
     <br>
@@ -21,6 +21,11 @@
       error: { type: String, required: false },
       src: { required: false },
       folder: { required: false }
+    },
+    computed: {
+      inputClass() {
+        return this.error ? "is-invalid" : "";
+      },
     },
     methods: {
       updateValue: function (e) {

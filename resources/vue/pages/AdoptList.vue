@@ -1,6 +1,13 @@
 <template>
   <card create_link="adopt/save">
-    <card-header>Dogs</card-header>
+    <card-header>
+      Dogs
+      <template v-slot:toolbar>
+        <router-link to="adopt/save">
+          <button class="btn btn-primary">Add</button>
+        </router-link>
+      </template>
+    </card-header>
     <card-body>
         <div class="table-responsive">
           <table class="table table-bordered table-hover">
@@ -14,7 +21,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="adopt in filteredAdopts">
+            <tr v-for="adopt in filteredAdopts" :key="adopt.adoptId">
               <td>{{ adopt.adoptId }}</td>
               <td>{{ adopt_stats[adopt.stat] }}</td>
               <td width="450px">

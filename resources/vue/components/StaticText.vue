@@ -1,5 +1,7 @@
 <template>
-    <p class="form-control-plaintext text-muted">email@example.com</p>
+    <p class="form-control-plaintext text-muted">
+      <slot></slot>
+    </p>
 </template>
 
 <script>

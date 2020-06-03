@@ -1,13 +1,13 @@
 <template>
   <div class="col-lg-3">
     <div :class="className">
-      <label v-for="(val, key) in options" class="m-checkbox">
+      <label v-for="(val, key) in options" :key="key" class="m-checkbox">
         <input type="checkbox" v-bind:value="key" :checked="isChecked(key, val)" :name="name" @change="updateValue(key, val)">
         {{ val }}
         <span></span>
       </label>
     </div>
-    <span class="m-form__help m-form__error" v-if="error">
+    <span class="invalid-feedback" v-if="error">
       {{ error }}
     </span>
   </div>

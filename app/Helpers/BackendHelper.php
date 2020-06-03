@@ -7,16 +7,6 @@ use Illuminate\Support\Str;
 
 class BackendHelper
 {
-    public static function processInput($input)
-    {
-        foreach ($input as $key => $value) {
-            if ($input[$key] == "null") {
-                $input[$key] = null;
-            }
-        }
-        return $input;
-    }
-
     public static function isDateTime($dateTime)
     {
         return DateTime::createFromFormat('Y-m-d H:i:s', $dateTime);
