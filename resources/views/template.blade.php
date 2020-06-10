@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Forget Me Not, dog shelter in Singapore</title>
+    <title>Forget Me Not, dogs for adoption in Singapore</title>
     <!-- Stylesheets -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -14,8 +14,18 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <meta name="decription" content="Looking to adopt a dog? Forget Me Not is a dog shelter in Singapore run by volunteers who spend time on weekends to walk the dogs, take care of them and find suitable homes for them.">
+    <meta name="author" content="Forget Me Not, Singapore">
+    <meta name="keywords" content="dog, adoption, adopt, singapore, mongrel, cross breed, save a life"><!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    
+    <meta property="og:title" content="Forget Me Not, dogs for adoption in Singapore"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="{{asset('images/merch1.jpg')}}"/>
+    <meta property="og:url" content="{{ url('/')}}"/>
+    <meta property="og:description" content="Looking to adopt a dog? Forget Me Not is a dog shelter in Singapore run by volunteers who spend time on weekends to walk the dogs, take care of them and find suitable homes for them."/>
+
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
@@ -64,7 +74,7 @@
             <div class="header-upper">
                 <div class="auto-container clearfix">
                     <div class="pull-left logo-outer">
-                        <div class="logo"><a href="{{url('/')}}"><img src="{{asset('images/forgetmenot-dog-shelter-singapore.logo.jpg')}}" alt="" title=""></a></div>
+                        <div class="logo"><a href="{{url('/')}}"><img src="{{asset('images/forgetmenot-dog-shelter-singapore-logo.jpg')}}" alt="" title=""></a></div>
                     </div>
                     <div class="pull-right upper-right clearfix">
                         <div class="nav-outer clearfix">
