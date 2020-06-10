@@ -74,7 +74,7 @@
                                     <!-- Toggle Button -->
                                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                         <span><i class="fa fa-bars"></i></span>
-                                    </button>4
+                                    </button>
                                 </div>
                                 <div class="menu clearfix">
                                     <ul class="navigation clearfix">
