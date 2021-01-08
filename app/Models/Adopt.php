@@ -35,11 +35,8 @@ class Adopt extends Model
         $this->sterilise = $input['sterilise'] ?? 0;
         $this->hdb = $input['hdb'] ?? 0;
         $this->desc = $input['desc'] ?? "";
-        $this->health = $input['health'] ?? "";
-        $this->behaviour = $input['behaviour'] ?? "";
-        $this->history = $input['history'] ?? "";
         if ($this->adoptId == null) {
-            $this->image = "";
+            $this->image1 = "";
         }
         $this->save();
         return $this->adoptId;

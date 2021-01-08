@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Forget Me Not, dogs for adoption in Singapore</title>
     <!-- Stylesheets -->
+    <link href="{{asset('css/flexslider.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
@@ -189,10 +190,10 @@
     <script src="{{asset('js/owl.js')}}"></script>
     <script src="{{asset('js/jquery-ui.js')}}"></script>
     <script src="{{asset('js/appear.js')}}"></script>
+    <script src="{{asset('js/jquery.flexslider.js')}}"></script>
     <script src="{{asset('js/wow.js')}}"></script>
     <script src="{{asset('js/gallery.js')}}"></script>
-    <script src="{{asset('js/script.js')}}"></script>
-    
+    <script src="{{asset('js/script.js')}}"></script>    
 </body>
 
 </html>

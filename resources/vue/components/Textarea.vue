@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <textarea :name="name" class="form-control" :class="inputClass" @input="updateValue($event.target.value)" :rows="rows">{{ value }}</textarea>
+    <textarea :name="name" class="form-control" :class="inputClass" @input="updateValue($event.target.value)" :rows="rows" :maxlength="maxlength">{{ value }}</textarea>
     <span class="invalid-feedback" v-if="error">
       {{ error }}
     </span>
@@ -14,7 +14,8 @@
       name: { type: String, required: false},
       value: { required: false},
       error: { type: String, required: false},
-      rows: { type: Number, required: false}
+      rows: { type: Number, required: false},
+      maxlength: { type: Number, required: false }
     },
     computed: {
       inputClass() {

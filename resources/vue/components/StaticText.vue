@@ -1,5 +1,5 @@
 <template>
-    <p class="form-control-plaintext text-muted">
+    <p class="form-control-plaintext">
       <slot></slot>
     </p>
 </template>

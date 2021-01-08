@@ -37,6 +37,8 @@ Route::get('api/adopt', 'AdoptController@index');
 Route::get('api/adopt/get/{adoptId}', 'AdoptController@get');
 Route::post('api/adopt/save', 'AdoptController@save');
 Route::post('api/adopt/save/{adoptId}', 'AdoptController@save');
+Route::post('api/adopt/image', 'AdoptController@image');
+Route::post('api/adopt/video', 'AdoptController@video');
 
 Route::get('api/blog', 'BlogController@all');
 Route::get('api/blog/get', 'BlogController@get');

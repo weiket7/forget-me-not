@@ -19,7 +19,7 @@ class AdoptRequest extends FormRequest
           'gender' => 'required',
           'birthday' => 'required',
           'breed' => 'required',
-          'imageNew' => 'required_without:adoptId|mimes:jpeg,png,gif|max:1024',
+          //'imageNew' => 'required_without:adoptId|mimes:jpeg,png,gif|max:1024',
         ];
     }
   
@@ -31,9 +31,9 @@ class AdoptRequest extends FormRequest
           'gender.required' => 'Gender is required',
           'birthday.required' => 'Birthday is required',
           'breed.required' => 'Breed is required',
-          'imageNew.required_without' => 'Image is required',
-          'imageNew.mimes' => 'Image must be jpg, png or gif',
-          'imageNew.max' => 'Image must be less than 1mb size',
+          //'imageNew.required_without' => 'Image is required',
+          //'imageNew.mimes' => 'Image must be jpg, png or gif',
+          //'imageNew.max' => 'Image must be less than 1mb size',
         ];
     }
 }

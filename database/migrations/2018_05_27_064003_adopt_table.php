@@ -23,10 +23,12 @@ class AdoptTable extends Migration
             $table->boolean('vaccinate')->nullable();
             $table->boolean('sterilise')->nullable();
             $table->boolean('hdb');
-            $table->string('image', 100);
-            $table->string('health', 500)->nullable();
-            $table->string('behaviour', 500)->nullable();
-            $table->string('history', 2000)->nullable();
+            $table->string('image1', 100);
+            $table->string('image2', 100)->nullable();
+            $table->string('image3', 100)->nullable();
+            $table->string('image4', 100)->nullable();
+            $table->string('image5', 100)->nullable();
+            $table->string('video', 100)->nullable();
             $table->string('desc', 2000)->nullable();
         });
 
@@ -38,7 +40,11 @@ class AdoptTable extends Migration
           'birthday'=>'2020-01-01',
           'breed'=>'Cross Breed',
           'hdb'=>1,
-          'image'=>'alpha.png',
+          'image1'=>'alpha.png',
+          'image2'=>'bravo.png',
+          'image3'=>'charlie.png',
+          'image4'=>'delta.png',
+          'image5'=>'echo.jpg',
           'desc'=>"The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.",
         ]);
 
@@ -50,7 +56,7 @@ class AdoptTable extends Migration
           'birthday'=>'2020-01-01',
           'breed'=>'Cross Breed',
           'hdb'=>1,
-          'image'=>'bravo.png',
+          'image1'=>'bravo.png',
           'desc'=>"The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.",
         ]);
 
@@ -62,7 +68,7 @@ class AdoptTable extends Migration
           'birthday'=>'2020-01-01',
           'breed'=>'Cross Breed',
           'hdb'=>1,
-          'image'=>'charlie.png',
+          'image1'=>'charlie.png',
           'desc'=>"The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.",
         ]);
 
@@ -74,7 +80,19 @@ class AdoptTable extends Migration
           'birthday'=>'2020-01-01',
           'breed'=>'Cross Breed',
           'hdb'=>1,
-          'image'=>'delta.png',
+          'image1'=>'delta.png',
+          'desc'=>"The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.",
+        ]);
+
+        DB::table('adopt')->insert([
+          'stat'=>AdoptStat::Available,
+          'name'=>'Echo',
+          'slug'=>'echo',
+          'gender'=>'F',
+          'birthday'=>'2020-01-01',
+          'breed'=>'Cross Breed',
+          'hdb'=>1,
+          'image1'=>'echo.jpg',
           'desc'=>"The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.",
         ]);
     }

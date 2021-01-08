@@ -43,7 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Header Mobile-->
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
-			<a href="index.html">
+			<a href="{{url('/')}}">
 				<img alt="Logo" src="assets/media/logos/logo-light.png" />
 			</a>
 			<!--end::Logo-->
@@ -893,7 +893,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 		<!--end::Global Theme Bundle-->
-		<script src="{{ asset('app.js') }}?v=0603"></script>
+		<script src="{{ mix('app.js') }}?v=0603"></script>
 	</body>
 	<!--end::Body-->
 </html>

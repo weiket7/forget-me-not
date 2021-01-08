@@ -12,6 +12,19 @@ class BackendHelper
         return DateTime::createFromFormat('Y-m-d H:i:s', $dateTime);
     }
   
+    public static function uploadVideo($name, $video)
+    {
+        if (App::environment('local')) {
+            $base_path = $_SERVER['DOCUMENT_ROOT'] . "/forgetmenot/public/videos/";
+        } else {
+            $base_path = $_SERVER['DOCUMENT_ROOT'] . "/public/videos/";
+        }
+    
+        $file_name = Str::slug($name).'.'.$video->getClientOriginalExtension();
+        $video->move($base_path, $file_name);
+        return $file_name;
+    }
+  
     public static function uploadImage($folder, $name, $image)
     {
         if (App::environment('local')) {
