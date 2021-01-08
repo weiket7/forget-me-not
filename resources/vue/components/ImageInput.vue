@@ -34,6 +34,7 @@ export default {
     value: {},
     folder: { type: String, required: false },
     canRemove: { type: Boolean, required: false, default: false },
+    maxMb: { type: Number, required: true }
   },
   data() {
     return {
@@ -49,18 +50,28 @@ export default {
   },
   methods: {
     updateValue: function (e) {
+      var file = e.target.files[0];
+      console.log(file.size);
+      console.log(1024*1024*this.maxMb);
+      if(file.size > 1024*1024*this.maxMb) {
+        toastr.error("File must be <"+this.maxMb+"mb");
+        return;
+      }
+
       var reader = new FileReader();
       var vue = this;
       reader.onload = function (e) {
         vue.style = "background-image: url(" + e.target.result + ")";
       };
-      var file = e.target.files[0];
+
       reader.readAsDataURL(file);
 
       this.$emit("input", file);
     },
     remove() {
       this.style = "background-image: url(assets/media/users/blank.png)";
+
+      this.$emit("delete");
     },
   },
 };

@@ -1,7 +1,9 @@
 <template>
   <form @submit.prevent="onSubmit()">
     <card>
-      <card-header>{{ isCreate ? 'Add Dog' : 'Update Dog' }}</card-header>
+      <card-header>
+        {{ isCreate ? 'Add Dog' : 'Update Dog' }}
+      </card-header>
       <card-body>
         <modal
           id="modal-delete"
@@ -12,7 +14,8 @@
         <div class="form-group row">
           <div class="col-md-6">
               <label-component required>Name</label-component>
-              <textbox-component v-model="adopt.name" :error="errors.get('name')"></textbox-component>
+              <textbox-component v-model="adopt.name"></textbox-component>
+            <input-error :error="errors.get('name')" />
           </div>
 
           <div class="col-md-6">
@@ -35,6 +38,7 @@
               :options="{ 'M': 'Male', 'F': 'Female' }"
               :error="errors.get('gender')"
             ></radio-component>
+            <input-error :error="errors.get('gender')" />
           </div>
 
           <div class="col-md-6">
@@ -46,6 +50,7 @@
               :months="true"
               v-if="loaded"
             ></datepicker-component>
+            <input-error :error="errors.get('birthday')" />
           </div>
         </div>
 
@@ -53,6 +58,7 @@
           <div class="col-md-6">
             <label-component required>Breed</label-component>
             <textbox-component v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
+            <input-error :error="errors.get('breed')" />
           </div>
 
           <div class="col-md-6">
@@ -63,6 +69,11 @@
 
         <div class="form-group row">
           <div class="col-md-6">
+            <label-component>Weight</label-component>
+            <textbox-component v-model="adopt.weight" :error="errors.get('weight')"></textbox-component>
+          </div>
+
+          <div class="col-md-6">
             <label-component>HDB Approved</label-component>
             <radio-component
               v-model="adopt.hdb"
@@ -70,7 +81,9 @@
               :error="errors.get('hdb')"
             ></radio-component>
           </div>
+        </div>
 
+        <div class="form-group row">
           <div class="col-md-6">
             <label-component>Microchipped</label-component>
             <radio-component
@@ -79,14 +92,14 @@
               :error="errors.get('microchip')"
             ></radio-component>
           </div>
+
+          <div class="col-md-6">
+            <label-component>Vaccinated</label-component>
+            <radio-component v-model="adopt.vaccinate" :options="{ 1: 'Yes', 0: 'No' }"></radio-component>
+          </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-md-6">
-              <label-component>Vaccinated</label-component>
-              <radio-component v-model="adopt.vaccinate" :options="{ 1: 'Yes', 0: 'No' }"></radio-component>
-            </div>
-
           <div class="col-md-6">
             <label-component>Sterilised</label-component>
             <radio-component
@@ -95,25 +108,35 @@
               :error="errors.get('sterilise')"
             ></radio-component>
           </div>
-        </div>
 
-        <div class="form-group row">
           <div class="col-md-6">
             <label-component>Description <small>(max 2000 characters)</small></label-component>
             <textarea-component :rows="7" v-model="adopt.desc" :error="errors.get('desc')" :maxlength="2000"></textarea-component>
           </div>
-          
-          <div class="col-md-6" v-if="!isCreate">
-            <label-component>Short Video <small>(max 128 mb)</small></label-component><br>
-            <input type="file" @input="uploadVideo"/><br>
-            <video width="320" height="240" controls v-if="loaded">
-              <source :src="baseUrl+'/videos/'+adopt.video">
-              Your browser does not support the video tag.
-            </video>
+        </div>
+
+        <div class="form-group row" v-if="isCreate">
+          <div class="col-md-12">
+            <div class="alert alert-secondary">
+                Complete saving information before adding images and/or video
+              </div>
           </div>
         </div>
 
         <div class="form-group row" v-if="!isCreate">
+          <div class="col-md-6">
+            <div>
+              <label-component>Short Video <small>(max 128 mb)</small></label-component><br>
+              <input type="file" @input="uploadVideo"/><br>
+              <video width="320" height="240" controls v-if="adopt.video && loaded">
+                <source :src="baseUrl+'/videos/'+adopt.video">
+                Your browser does not support the video tag.
+              </video>
+
+              <button class="btn btn-secondary" type="button" @click="deleteVideo" v-if="adopt.video && loaded">Delete Video</button>
+            </div>
+          </div>
+
           <div class="col-md-6">
             <div class="form-group">
               <label-component required>
@@ -121,21 +144,23 @@
                 <small>(default, max size 1mb)</small>
               </label-component><br>
               
-              <image-input name="image1" folder="adopts" v-model="adopt.image1" v-if="loaded" @input="uploadImage($event, 1)"/>
+              <image-input name="image1" folder="adopts" v-model="adopt.image1" v-if="loaded" :maxMb="1" @input="uploadImage($event, 1)"/>
             </div>
           </div>
+        </div>
 
+        <div class="form-group row" v-if="!isCreate">
           <div class="col-md-6">
             <label-component required>
               Image 2
               <small>(max size 1mb)</small>
             </label-component><br>
             
-            <image-input name="image2" folder="adopts" v-model="adopt.image2" v-if="loaded" @input="uploadImage($event, 2)"/>
+            <image-input name="image2" folder="adopts" v-model="adopt.image2" v-if="loaded" :maxMb="1" canRemove 
+              @delete="deleteImage(2)"
+              @input="uploadImage($event, 2)"/>
           </div>
-        </div>
 
-        <div class="form-group row" v-if="!isCreate">
           <div class="col-md-6">
             <div class="form-group">
               <label-component required>
@@ -143,21 +168,25 @@
                 <small>(max size 1mb)</small>
               </label-component><br>
               
-              <image-input name="image3" folder="adopts" v-model="adopt.image3" v-if="loaded" @input="uploadImage($event, 3)"/>
+              <image-input name="image3" folder="adopts" v-model="adopt.image3" v-if="loaded" :maxMb="1" canRemove 
+                @delete="deleteImage(3)"
+                @input="uploadImage($event, 3)"/>
             </div>
           </div>
+        </div>
 
+        <div class="form-group row" v-if="!isCreate">
           <div class="col-md-6">
             <label-component required>
               Image 4
               <small>(max size 1mb)</small>
             </label-component><br>
             
-            <image-input name="image4" folder="adopts" v-model="adopt.image4" v-if="loaded" @input="uploadImage($event, 4)"/>
+            <image-input name="image4" folder="adopts" v-model="adopt.image4" v-if="loaded" :maxMb="1" canRemove 
+              @delete="deleteImage(4)"
+              @input="uploadImage($event, 4)"/>
           </div>
-        </div>
 
-        <div class="form-group row" v-if="!isCreate">
           <div class="col-md-6">
             <div class="form-group">
               <label-component required>
@@ -165,7 +194,9 @@
                 <small>(max size 1mb)</small>
               </label-component><br>
               
-              <image-input name="image5" folder="adopts" v-model="adopt.image5" v-if="loaded" @input="uploadImage($event, 5)"/>
+              <image-input name="image5" folder="adopts" v-model="adopt.image5" v-if="loaded" :maxMb="1" canRemove 
+                @delete="deleteImage(4)"
+                @input="uploadImage($event, 5)"/>
             </div>
           </div>
         </div>
@@ -207,7 +238,7 @@ export default {
   methods: {
     uploadVideo(e) {
       var video = e.target.files[0];
-      console.log(video.size);
+      //console.log(video.size);
       if(video.size > 1024*1024*128) {
         toastr.error("Video must be <128mb");
         return;
@@ -224,11 +255,31 @@ export default {
       };
 
       axios
-        .post('api/adopt/video', formData, config)
-        .then(this.onSuccess)
+        .post('api/adopt/upload-video', formData, config)
+        .then(response => {
+          toastr.success("Video added");
+          this.adopt.video = response.data.name;
+        })
+        .catch(this.onError);
+    },
+    deleteVideo() {
+      const data = {
+        adoptId: this.adopt.adoptId,
+      }
+      axios
+        .post('api/adopt/delete-video', data)
+        .then(response => {
+          toastr.success("Video deleted");
+          this.adopt.video = null;
+        })
         .catch(this.onError);
     },
     uploadImage(image, imageNumber) {
+      if(image.size > 1024*1024*1) {
+        toastr.error("Image must be <1mb");
+        return;
+      }
+
       var formData = new FormData();
       formData.append("adoptId", this.adopt.adoptId);
       formData.append("imageNumber", imageNumber);
@@ -241,8 +292,22 @@ export default {
       };
 
       axios
-        .post('api/adopt/image', formData, config)
-        .then(this.onSuccess)
+        .post('api/adopt/upload-image', formData, config)
+        .then(response => {
+          toastr.success("Image added");
+        })
+        .catch(this.onError);
+    },
+    deleteImage(imageNumber) {
+      const data = {
+        adoptId: this.adopt.adoptId,
+        imageNumber: imageNumber
+      }
+      axios
+        .post('api/adopt/delete-image', data)
+        .then(response => {
+          toastr.success("Image deleted");
+        })
         .catch(this.onError);
     },
     onSubmit() {

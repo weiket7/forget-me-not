@@ -427,7 +427,7 @@
        When document is loaded, do
        ========================================================================== */
     $(window).load(function () {
-        if ($('#petcarousel').length) {
+        if ($('#petslider').length) {
             $('#petcarousel').flexslider({
                 animation: "slide",
                 controlNav: false,

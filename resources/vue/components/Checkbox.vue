@@ -1,16 +1,11 @@
 <template>
-  <div class="col-lg-3">
-    <div :class="className">
-      <label v-for="(val, key) in options" :key="key" class="m-checkbox">
-        <input type="checkbox" v-bind:value="key" :checked="isChecked(key, val)" :name="name" @change="updateValue(key, val)">
-        {{ val }}
+    <div :class="divClass">
+      <label v-for="(val, key) in options" class="checkbox">
+        <input type="checkbox" v-bind:value="key" :checked="isChecked(key, val)" :name="name" @change="updateValue(key, $event.target.value)">
         <span></span>
+        {{ val }}
       </label>
     </div>
-    <span class="invalid-feedback" v-if="error">
-      {{ error }}
-    </span>
-  </div>
 </template>
 
 <script>
@@ -20,7 +15,7 @@
       name: { type: String, required: false},
       value: { required: false},
       error: { type: String, required: false},
-      inline: { type: Boolean, required: false, default: false },
+      inline: { type: Boolean, required: false, default: true },
       options: {required: true}
     },
     methods: {
@@ -47,8 +42,14 @@
       }
     },
     computed: {
-      className() {
-        return this.inline ? 'm-checkbox-inline' : 'm-checkbox-list';
+      divClass() {
+        return this.inline ? 'checkbox-inline' : 'checkbox-list';
+      },
+      inputClass() {
+        return this.error ? "is-invalid" : "";
+      },
+      isArray() {
+        return Array.isArray(this.options);
       }
     }
   }

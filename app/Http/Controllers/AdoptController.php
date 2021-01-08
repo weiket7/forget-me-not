@@ -37,7 +37,7 @@ class AdoptController extends Controller
         return $data;
     }
     
-    public function video(Request $request)
+    public function uploadVideo(Request $request)
     {
         $nameWithExtension = $request->video->getClientOriginalName();
         $nameWithoutExtension = explode('.', $nameWithExtension)[0];
@@ -45,6 +45,7 @@ class AdoptController extends Controller
         $videoName = BackendHelper::uploadVideo($nameWithoutExtension, $request->video);
         $data['uploaded'] = 1;
         $data['url'] = url('/') . '/videos/'.$videoName;
+        $data['name'] = $videoName;
 
         $adopt = Adopt::find($request->adoptId);
         $adopt->video = $videoName;
@@ -52,20 +53,15 @@ class AdoptController extends Controller
         return $data;
     }
     
-    public function image(Request $request)
+    public function deleteVideo(Request $request)
     {
-        $messages = [
-            'image.max' => 'Image must be < 1mb',
-        ];
-        
-        $validator = Validator::make($request->all(), [
-            'image' => 'file|max:'.(1024 * 1),
-        ], $messages);
-        
-        if ($validator->fails()) {
-            return $validator->errors();
-        }
-
+        $adopt = Adopt::find($request->adoptId);
+        $adopt->video = null;
+        $adopt->save();
+    }
+    
+    public function uploadImage(Request $request)
+    {
         $nameWithExtension = $request->image->getClientOriginalName();
         $nameWithoutExtension = explode('.', $nameWithExtension)[0];
       
@@ -77,5 +73,12 @@ class AdoptController extends Controller
         $adopt['image'.$request->imageNumber] = $imageName;
         $adopt->save();
         return $data;
+    }
+    
+    public function deleteImage(Request $request)
+    {
+        $adopt = Adopt::find($request->adoptId);
+        $adopt['image'.$request->imageNumber] = null;
+        $adopt->save();
     }
 }

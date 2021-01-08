@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <input type="text" :name="name" :value="value" class="form-control" :class="inputClass" @input="updateValue($event.target.value)"/>
-    <span class="invalid-feedback" v-if="error">
-      {{ error }}
-    </span>
-  </div>
+  <input type="text" :name="name" :value="value" class="form-control"
+    :maxlength="maxLength"
+    @input="updateValue($event.target.value)"/>
 </template>
 
 <script>
@@ -14,6 +11,7 @@
       name: { type: String, required: false},
       value: { required: false},
       error: { type: String, required: false},
+      maxLength: { type: Number, required: false }
     },
     computed: {
       inputClass() {

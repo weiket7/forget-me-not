@@ -11,33 +11,58 @@
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image1) }}" style="max-height: 460px">
                             </li>
+                            @if($adopt->image2)
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image2) }}" style="max-height: 460px">
                             </li>
+                            @endif
+                            @if($adopt->image3)
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image3) }}" style="max-height: 460px">
                             </li>
+                            @endif
+                            @if($adopt->image4)
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image4) }}" style="max-height: 460px">
                             </li>
+                            @endif
+                            @if($adopt->image5)
+                            <li>
+                                <img src="{{ asset('images/adopts/'.$adopt->image5) }}" style="max-height: 460px">
+                            </li>
+                            @endif
                         </ul>
                     </div>
+                    @if(strlen($adopt->image2) > 0 || strlen($adopt->image3) > 0 || strlen($adopt->image4) > 0 || strlen($adopt->image5) > 0)
                     <div id="petcarousel" class="flexslider">
                         <ul class="slides">
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image1) }}" style="max-height: 460px">
                             </li>
+                            @if($adopt->image2)
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image2) }}" style="max-height: 460px">
                             </li>
+                            @endif
+                            @if($adopt->image3)
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image3) }}" style="max-height: 460px">
                             </li>
+                            @endif
+                            @if($adopt->image4)
                             <li>
                                 <img src="{{ asset('images/adopts/'.$adopt->image4) }}" style="max-height: 460px">
                             </li>
+                            @endif
+                            @if($adopt->image5)
+                            <li>
+                                <img src="{{ asset('images/adopts/'.$adopt->image5) }}" style="max-height: 460px">
+                            </li>
+                            @endif
                         </ul>
                     </div>
+                    @endif
+
                 </section>
             </div>
             <div class="col-md-6 product_detail_side detail_style1">

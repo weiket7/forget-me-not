@@ -1,10 +1,5 @@
 <template>
-  <div class="">
-    <input type="text" :id="'datepicker-'+name" :name="name" :value="display_value" class="form-control" @input="updateValue($event.target.value)" readonly/>
-    <span class="invalid-feedback" v-if="error">
-      {{ error }}
-    </span>
-  </div>
+  <input type="text" :id="'datepicker-'+name" :name="name" :value="displayValue" class="form-control" @input="updateValue($event.target.value)" readonly/>
 </template>
 
 <script>
@@ -12,13 +7,12 @@
     name: "datepicker-component",
     data() {
       return {
-          display_value: ""
+          displayValue: ""
       }
     },
     props: {
       name: { type: String, required: true},
       value: { required: false},
-      error: { type: String, required: false},
       months: { type: Boolean, required: false},
     },
     methods: {
@@ -50,8 +44,8 @@
 
       if (this.value) {
         let date = moment(this.value, 'YYYY-MM-DD');
-        this.display_value = this.months ? date.format('MMM YYYY') : date.format('DD MMM YYYY');
-        options["defaultViewDate"] = this.display_value;
+        this.displayValue = this.months ? date.format('MMM YYYY') : date.format('DD MMM YYYY');
+        options["defaultViewDate"] = this.displayValue;
       }
       let vue = this
       //without nextTick, when click datepicker then click outside, value will be gone

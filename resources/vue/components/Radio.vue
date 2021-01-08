@@ -1,17 +1,12 @@
 <template>
-  <div class="">
-    <div :class="divClass">
+    <div class="col-form-label" :class="divClass">
       <label v-for="(val, key) in options" :key="key" class="radio">
         <input type="radio" v-if="isArray" v-bind:value="val" :checked="value == val" :name="name" @change="updateValue($event.target.value)">
         <input type="radio" v-if="!isArray" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
-        {{ val }}
         <span></span>
+        {{ val }}
       </label>
     </div>
-    <span class="invalid-feedback" v-if="error">
-      {{ error }}
-    </span>
-  </div>
 </template>
 
 <script>
