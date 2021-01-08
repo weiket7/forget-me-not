@@ -106,8 +106,8 @@
           <div class="col-md-6" v-if="!isCreate">
             <label-component>Short Video <small>(max 128 mb)</small></label-component><br>
             <input type="file" @input="uploadVideo"/><br>
-            <video width="320" height="240" controls>
-              <source :src="'videos/'+adopt.video">
+            <video width="320" height="240" controls v-if="loaded">
+              <source :src="baseUrl+'/videos/'+adopt.video">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -118,7 +118,7 @@
             <div class="form-group">
               <label-component required>
                 Image 1
-                <small>(max size 1mb)</small>
+                <small>(default, max size 1mb)</small>
               </label-component><br>
               
               <image-input name="image1" folder="adopts" v-model="adopt.image1" v-if="loaded" @input="uploadImage($event, 1)"/>
@@ -195,7 +195,8 @@ export default {
   data() {
     return {
       adopt: { breed: "Cross Breed" },
-      imageNew: null
+      imageNew: null,
+      baseUrl: window.baseUrl,
     };
   },
   computed: {

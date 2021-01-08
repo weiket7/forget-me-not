@@ -54,6 +54,18 @@ class AdoptController extends Controller
     
     public function image(Request $request)
     {
+        $messages = [
+            'image.max' => 'Image must be < 1mb',
+        ];
+        
+        $validator = Validator::make($request->all(), [
+            'image' => 'file|max:'.(1024 * 1),
+        ], $messages);
+        
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
+
         $nameWithExtension = $request->image->getClientOriginalName();
         $nameWithoutExtension = explode('.', $nameWithExtension)[0];
       

@@ -215,3 +215,6 @@
 .adopt-desc {
     margin-top: 10px;
 }
+.flexslider .slides img {
+    width: auto;
+}

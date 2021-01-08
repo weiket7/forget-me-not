@@ -45,6 +45,7 @@ class AdoptTable extends Migration
           'image3'=>'charlie.png',
           'image4'=>'delta.png',
           'image5'=>'echo.jpg',
+          'video'=>'alpha-video.mp4',
           'desc'=>"The loyal fluff is the rarest gem. Just like the royal flush. He values you (& his wife Buffy) more than anything else. He's the greatest companion one could ever have.",
         ]);
 

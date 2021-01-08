@@ -15,7 +15,7 @@
                 <div class="inner-box">
                     <div class="image">
                         <a href="{{ url('view/'.$adopt->slug ) }}" class='adopt-img-container'>
-                            <img src="{{asset('images/adopts/'.$adopt->image)}}" class="adopt-img" />
+                            <img src="{{asset('images/adopts/'.$adopt->image1)}}" class="adopt-img" />
                         </a>
                     </div>
 
