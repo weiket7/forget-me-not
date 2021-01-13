@@ -897,7 +897,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 		<!--end::Global Theme Bundle-->
-		<script src="{{ mix('app.js') }}?v=0603"></script>
+		<script src="{{ mix('app.js') }}?v=0108"></script>
 	</body>
 	<!--end::Body-->
 </html>

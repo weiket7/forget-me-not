@@ -127,11 +127,14 @@
           <div class="col-md-6">
             <div>
               <label-component>Short Video <small>(max 128 mb)</small></label-component><br>
-              <input type="file" @input="uploadVideo"/><br>
-              <video width="320" height="240" controls v-if="adopt.video && loaded">
+              <input type="file" @input="uploadVideo"/>
+              <div class="spinner-border" role="status" v-if="videoUploading">
+                <span class="sr-only">Loading...</span>
+              </div><br>
+              <video width="320" height="200" controls v-if="adopt.video && loaded">
                 <source :src="baseUrl+'/videos/'+adopt.video">
                 Your browser does not support the video tag.
-              </video>
+              </video><br>
 
               <button class="btn btn-secondary" type="button" @click="deleteVideo" v-if="adopt.video && loaded">Delete Video</button>
             </div>
@@ -228,6 +231,7 @@ export default {
       adopt: { breed: "Cross Breed" },
       imageNew: null,
       baseUrl: window.baseUrl,
+      videoUploading: false,
     };
   },
   computed: {
@@ -254,9 +258,12 @@ export default {
         }
       };
 
+      this.videoUploading = true;
+
       axios
         .post('api/adopt/upload-video', formData, config)
         .then(response => {
+          this.videoUploading = false;
           toastr.success("Video added");
           this.adopt.video = response.data.name;
         })

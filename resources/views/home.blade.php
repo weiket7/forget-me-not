@@ -87,7 +87,7 @@
                 <div class="separator">
                     <span class="icon flaticon-pawprint-1"></span>
                 </div>
-                <div class="title">Showing 12 random out of 24 dogs in random order</div>
+                <div class="title">Showing 4 random out of {{ $adoptCount }} dogs in random order</div>
                 <h2>Dogs for adoption</h2>
             </div>
             <div class="single-item-carousel owl-carousel owl-theme">
@@ -99,7 +99,7 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <a href="{{ url("view/".$adopt->slug) }}">
-                                                <img src="{{ asset("images/adopts/".$adopt->image) }}" class="home-dog-img">
+                                                <img src="{{ asset("images/adopts/".$adopt->image1) }}" class="home-dog-img">
                                             </a>
                                         </div>
                                         <div class="col-md-9">

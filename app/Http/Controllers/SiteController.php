@@ -22,6 +22,7 @@ class SiteController extends Controller
         }
         $rand = $request->session()->get('rand');
         $data['adopts'] = Adopt::getFeaturedAdopts($rand);
+        $data['adoptCount'] = Adopt::where('stat', AdoptStat::Available)->count();
         $data['posts'] = Blog::getLatestPosts();
         return view('home', $data);
     }

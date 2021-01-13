@@ -74,14 +74,17 @@
                     <li>Age: <strong>{{ $adopt->age }}</strong></li>
                     <li>Gender: <strong>{{ $adopt->gender == 'M' ? 'Male' : "Female" }}</strong></li>
                     <li>HDB: <strong>{{ $adopt->hdb ? 'Approved' : 'Not Approved'}}</strong></li>
+                    @if($adopt->weight)
+                        <li>Weight: {{ $adopt->weight }}</li>
+                    @endif
                     @if($adopt->sterilise)
-                    <li>Sterilised</li>
+                        <li>Sterilised</li>
                     @endif
                     @if($adopt->vaccinate)
-                    <li>Vaccinated</li>
+                        <li>Vaccinated</li>
                     @endif
                     @if($adopt->microchip)
-                    <li>Microchipped</li>
+                        <li>Microchipped</li>
                     @endif
                 </ul>
 
@@ -92,10 +95,12 @@
                 @if($adopt->video)
                     <hr>
 
-                    <video controls>
-                    <source src="{{asset("videos/".$adopt->video)}}">
-                    Your browser does not support the video tag.
-                    </video>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <video controls>
+                            <source src="{{asset("videos/".$adopt->video)}}">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 @endif
 
                 <hr>
