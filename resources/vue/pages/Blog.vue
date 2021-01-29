@@ -31,6 +31,7 @@
                   :src="blog.image" folder="blog"
                   :error="errors.get('imageNew')">
                 </image-component>
+
             </div>
 
             <div class="form-group">
@@ -57,6 +58,7 @@
 import axios from 'axios';
 import FormMixin from "../form-mixin";
 import TextEditor from '../components/TextEditor'
+import ImageComponent from "../components/ImageComponent"
 
 export default {
     name: "blog",
@@ -144,7 +146,8 @@ export default {
       }
     },
     components: {
-        TextEditor
+        TextEditor,
+        ImageComponent
     },
     mixins: [FormMixin],
   }

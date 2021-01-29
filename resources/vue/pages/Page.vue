@@ -26,7 +26,8 @@
 <script>
 import axios from 'axios';
 import TextEditor from '../components/TextEditor'
-  import FormMixin from "../form-mixin";
+import FormMixin from "../form-mixin";
+import ImageComponent from "../components/ImageComponent"
 
 export default {
     name: "Page",
@@ -84,7 +85,8 @@ export default {
         }
     },
     components: {
-        TextEditor
+        TextEditor,
+        ImageComponent
     },
     mixins: [FormMixin]
 
